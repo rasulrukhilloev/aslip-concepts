@@ -1,0 +1,336 @@
+<title>ASL IP Texnik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{--bg:#0e141b;--bg2:#141c25;--bg3:#1b2530;--ink:#e7edf3;--muted:#8c9aab;--line:#243140;--accent:#f0a325;--accent-ink:#141c25;--steel:#4d84ad;--logo-bg:#0e141b;
+--fd:'Barlow Condensed','Arial Narrow',Impact,sans-serif;--fb:'Barlow','Helvetica Neue',Arial,sans-serif;--fm:'JetBrains Mono',Menlo,Consolas,monospace}
+html{scroll-behavior:smooth;color-scheme:dark}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16.5px/1.6 var(--fb);-webkit-font-smoothing:antialiased}
+:root[data-lang="uz"] .en,:root[data-lang="en"] .uz{display:none!important}
+.wrap{width:min(1240px,100% - 48px);margin-inline:auto}
+@media (max-width:640px){.wrap{width:calc(100% - 32px)}}
+h1,h2,h3{font-family:var(--fd);font-weight:700;line-height:.94;margin:0;text-wrap:balance;text-transform:uppercase;letter-spacing:.005em}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+canvas{display:block;width:100%;height:100%}
+.mono{font-family:var(--fm);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.mono b{color:var(--accent);font-weight:600}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;background:var(--accent);color:var(--accent-ink);font:600 15px/1 var(--fb);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer;border-radius:2px}
+.btn:hover{background:#ffb640}
+.btn.line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--muted)}
+.btn.line:hover{box-shadow:inset 0 0 0 1px var(--ink);background:transparent}
+.more{font:600 14px/1 var(--fb);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--accent);display:inline-flex;gap:8px;align-items:center}
+.more::after{content:"→"}
+/* header */
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(14,20,27,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.hdr .wrap{display:flex;align-items:center;gap:28px;min-height:72px;position:relative}
+.logo{display:block;color:var(--ink);height:40px;width:156px;flex:none}
+.logo svg{width:100%;height:100%;display:block;overflow:visible}
+.nav{display:flex;gap:2px;list-style:none;margin:0 auto;padding:0}
+.nav a{display:block;text-decoration:none;font:600 13.5px/1 var(--fb);letter-spacing:.12em;text-transform:uppercase;padding:10px 12px;color:var(--muted);border-radius:2px}
+.nav a:hover{color:var(--ink);background:var(--bg3)}
+.tools{display:flex;align-items:center;gap:16px;flex:none}
+.lang{display:flex;border:1px solid var(--line);border-radius:2px;overflow:hidden}
+.lang button{background:transparent;border:0;padding:8px 11px;color:var(--muted);cursor:pointer;font:600 12px/1 var(--fm);letter-spacing:.1em}
+.lang button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.burger{display:none;background:none;border:1px solid var(--line);width:44px;height:40px;border-radius:2px;cursor:pointer;color:var(--ink);flex-direction:column;justify-content:center;align-items:center;gap:5px}
+.burger i{display:block;width:18px;height:2px;background:currentColor}
+@media (max-width:980px){
+ .nav{display:none}
+ .nav.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--bg2);border-bottom:1px solid var(--line);padding:10px 24px 18px;gap:0}
+ .nav.open a{padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
+ .tools .btn{display:none}
+ .burger{display:flex}
+}
+/* hero */
+.hero{position:relative;overflow:hidden;background:#111a24;border-bottom:1px solid var(--line)}
+.hero canvas{position:absolute;inset:0}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,20,27,.94) 0%,rgba(14,20,27,.7) 50%,rgba(14,20,27,.35) 100%);z-index:1}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(28px,4vw,64px);align-items:end;padding-block:clamp(56px,8vw,120px) clamp(40px,5vw,72px)}
+.hero h1{font-size:clamp(48px,7.2vw,112px);max-width:12ch}
+.hero .lead{max-width:50ch;color:#c2ccd7;font-size:18px;margin-top:22px}
+.hero .acts{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.panel{background:rgba(20,28,37,.82);border:1px solid var(--line);border-radius:3px;padding:18px 20px;font-family:var(--fm);font-size:12.5px;letter-spacing:.04em;backdrop-filter:blur(6px)}
+.panel .ph{display:flex;justify-content:space-between;color:var(--muted);text-transform:uppercase;font-size:11px;letter-spacing:.12em;padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:6px}
+.panel .ph b{color:var(--accent);font-weight:600}
+.panel dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:0 18px}
+.panel dt{color:var(--muted);text-transform:uppercase;padding:9px 0;border-bottom:1px solid var(--line);font-size:11px;letter-spacing:.1em}
+.panel dd{margin:0;padding:9px 0;border-bottom:1px solid var(--line);color:var(--ink);text-align:right;font-variant-numeric:tabular-nums}
+.panel dt:last-of-type,.panel dd:last-of-type{border-bottom:0}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr}}
+/* ticker */
+.ticker{border-bottom:1px solid var(--line);background:var(--bg2);overflow:hidden;white-space:nowrap;padding-block:11px}
+.ticker .track{display:inline-flex;gap:0;animation:tick 42s linear infinite}
+.ticker:hover .track{animation-play-state:paused}
+.ticker span.it{font-family:var(--fm);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:0 28px;display:inline-flex;align-items:center;gap:14px}
+.ticker span.it::before{content:"";width:7px;height:7px;background:var(--accent);border-radius:1px;flex:none}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.ticker{white-space:normal}.ticker .track{animation:none;flex-wrap:wrap;gap:8px 0}.ticker .track .dup{display:none}html{scroll-behavior:auto}}
+/* sections */
+.sec{padding-block:clamp(56px,7vw,100px);border-bottom:1px solid var(--line)}
+.sec-alt{background:var(--bg2)}
+.sec-head{display:grid;grid-template-columns:auto 1fr;gap:16px 48px;align-items:end;margin-bottom:clamp(32px,4vw,52px)}
+.sec-head h2{font-size:clamp(40px,5vw,72px);margin-top:8px}
+.sec-head p{max-width:58ch;color:var(--muted);font-size:16px}
+@media (max-width:760px){.sec-head{grid-template-columns:1fr}}
+/* count ruler */
+.ruler{background:var(--bg3);border:1px solid var(--line);border-radius:3px;padding:22px 22px 16px;margin-bottom:clamp(28px,4vw,44px);overflow-x:auto}
+.ruler svg{display:block;width:100%;min-width:640px;height:auto}
+.ruler .legend{display:flex;gap:26px;flex-wrap:wrap;margin-top:8px}
+.ruler .legend span{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.ruler .legend i{width:14px;height:8px;border-radius:1px;flex:none}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:24px}
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:3px;overflow:hidden;display:flex;flex-direction:column}
+.sec-alt .card{background:var(--bg)}
+.card .fig{aspect-ratio:16/9;position:relative;background:#2a323c}
+.card.tall .fig{aspect-ratio:4/3}
+.card .fig .lab{position:absolute;left:14px;top:14px;font-family:var(--fm);font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:rgba(14,20,27,.8);color:var(--ink);padding:6px 9px;border-radius:2px;border:1px solid var(--line)}
+.card .body{padding:22px 24px 26px;display:flex;flex-direction:column;gap:14px;flex:1}
+.card h3{font-size:34px}
+.card .body>p{color:var(--muted);font-size:15.5px}
+table.spec{width:100%;border-collapse:collapse;font-family:var(--fm);font-size:12.5px;letter-spacing:.02em;margin-top:4px}
+table.spec th{text-align:left;font-weight:400;color:var(--muted);text-transform:uppercase;font-size:11px;letter-spacing:.1em;padding:9px 0;border-top:1px solid var(--line);width:38%;vertical-align:top}
+table.spec td{padding:9px 0;border-top:1px solid var(--line);color:var(--ink);vertical-align:top;font-variant-numeric:tabular-nums}
+.card .more{margin-top:auto;padding-top:8px}
+/* about */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px);align-items:start}
+.about h2{font-size:clamp(40px,5vw,72px)}
+.about h2 em{font-style:normal;color:var(--accent)}
+.about .txt p{color:#c2ccd7;margin-top:18px;max-width:56ch}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.tile{background:var(--bg3);border:1px solid var(--line);border-radius:3px;padding:18px 18px 16px}
+.tile b{display:block;font-family:var(--fm);font-weight:600;font-size:clamp(30px,3.4vw,44px);line-height:1;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.tile b small{font-size:.45em;color:var(--muted);font-weight:400;margin-left:4px}
+.tile span{display:block;margin-top:10px;font-family:var(--fm);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.site{position:relative;aspect-ratio:2/1;border:1px solid var(--line);border-radius:3px;overflow:hidden;margin-top:14px;grid-column:1/-1;background:#4f6a3a}
+.site .lab{position:absolute;left:14px;bottom:14px;font-family:var(--fm);font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:rgba(14,20,27,.82);padding:7px 10px;border-radius:2px;border:1px solid var(--line)}
+.site .lab b{color:var(--accent);font-weight:600}
+@media (max-width:860px){.about{grid-template-columns:1fr}}
+/* quality */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
+.chip{font-family:var(--fm);font-size:12px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line);border-radius:2px;padding:9px 12px;display:inline-flex;gap:10px;align-items:center;background:var(--bg)}
+.chip::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none}
+.chip small{color:var(--muted);font-size:11px;text-transform:none;letter-spacing:0}
+.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.qgrid h3{font-size:28px;margin-bottom:12px}
+.pol{margin:0;padding:0;list-style:none}
+.pol li{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-top:1px solid var(--line);align-items:baseline}
+.pol a{text-decoration:none;font-weight:500}
+.pol a:hover{color:var(--accent)}
+.pol small{font-family:var(--fm);font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.qgrid .txt p{color:var(--muted);font-size:15.5px}
+@media (max-width:760px){.qgrid{grid-template-columns:1fr}}
+/* newsletter */
+.nlrow{display:flex;align-items:center;justify-content:space-between;gap:20px 48px;flex-wrap:wrap}
+.nlrow h3{font-size:30px}
+.nlrow p{color:var(--muted);margin-top:6px}
+.nl{flex:1 1 360px;max-width:520px}
+.nl .fields{display:flex;gap:8px}
+.nl input{flex:1;min-width:0;border:1px solid var(--line);border-radius:2px;padding:12px 14px;font:400 15px var(--fb);background:var(--bg3);color:var(--ink)}
+.nl input:focus{border-color:var(--accent);outline:none}
+.nl .thanks{display:none;font-family:var(--fm);font-size:13px;color:var(--accent)}
+.nl.done .fields{display:none}.nl.done .thanks{display:block}
+/* contact */
+.loc{display:grid;gap:0;border-top:1px solid var(--line)}
+.loc article{display:grid;grid-template-columns:1.1fr 1.6fr 1fr 1fr;gap:16px 32px;padding:22px 0;border-bottom:1px solid var(--line);align-items:start}
+.loc h3{font-size:28px}
+.loc p{color:var(--muted);font-size:15px}
+.loc a{display:block;text-decoration:none;font-weight:500}
+.loc a:hover{color:var(--accent)}
+.loc .geo{font-family:var(--fm);font-size:12px;letter-spacing:.06em;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:860px){.loc article{grid-template-columns:1fr 1fr}.loc .geo{text-align:left;grid-column:1/-1}}
+@media (max-width:520px){.loc article{grid-template-columns:1fr}}
+/* footer */
+footer{padding-block:40px 28px;font-size:14.5px}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+footer .logo{margin-bottom:14px}
+footer p{color:var(--muted);max-width:36ch}
+footer h4{font-family:var(--fm);font-weight:400;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+footer li a{text-decoration:none;color:#c2ccd7}
+footer li a:hover{color:var(--accent)}
+.fbot{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;color:var(--muted);font-family:var(--fm);font-size:11.5px;letter-spacing:.04em}
+.soc{display:flex;gap:16px}
+.soc a{text-decoration:none;text-transform:uppercase}
+.soc a:hover{color:var(--accent)}
+.grp{font-family:'Alfa Slab One',Georgia,serif;letter-spacing:.04em;font-size:13px}
+@media (max-width:900px){.fgrid{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.fgrid{grid-template-columns:1fr}}
+</style>
+<script>(function(){var l='uz';try{l=localStorage.getItem('aslip-lang')||l}catch(e){}var r=document.documentElement;r.setAttribute('data-lang',l);r.lang=l;})();</script>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="logo" viewBox="0 0 250 64"><g transform="translate(34,42)"><ellipse rx="32" ry="10" fill="currentColor"/><path d="M-9 -10 L 4 -10 L -2 10 L -15 10 Z" style="fill:var(--logo-bg,#fff)"/><rect x="-32" y="-1.2" width="18" height="2.4" style="fill:var(--logo-bg,#fff)"/></g><text x="78" y="52" font-family="'Alfa Slab One',Georgia,serif" font-size="40" fill="currentColor" letter-spacing="1">ASL IP</text></symbol></svg>
+
+<header class="hdr"><div class="wrap">
+ <a class="logo" href="#top" aria-label="ASL IP"><svg><use href="#logo"/></svg></a>
+ <ul class="nav" id="nav">
+  <li><a href="#about"><span class="uz">Korporativ</span><span class="en">Corporate</span></a></li>
+  <li><a href="#products"><span class="uz">Ip</span><span class="en">Yarn</span></a></li>
+  <li><a href="#dyeing"><span class="uz">Bo'yash</span><span class="en">Dyeing</span></a></li>
+  <li><a href="#quality"><span class="uz">Siyosatlar</span><span class="en">Policies</span></a></li>
+  <li><a href="#contact"><span class="uz">Yangiliklar</span><span class="en">News</span></a></li>
+  <li><a href="#contact"><span class="uz">Aloqa</span><span class="en">Contact</span></a></li>
+ </ul>
+ <div class="tools">
+  <div class="lang" role="group" aria-label="Language"><button type="button" data-setlang="uz" aria-pressed="true">UZ</button><button type="button" data-setlang="en" aria-pressed="false">EN</button></div>
+  <a class="btn" href="#contact"><span class="uz">Taklif so'rash</span><span class="en">Request a quote</span></a>
+  <button class="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu"><i></i><i></i><i></i></button>
+ </div>
+</div></header>
+
+<main id="top">
+<section class="hero"><canvas data-scene="hall" data-tint="#3f6f96" data-mul="rgba(20,34,50,.7)"></canvas><div class="wrap">
+ <div><span class="mono"><b>01</b> · <span class="uz">Akril va akril aralashmali iplar</span><span class="en">Acrylic and acrylic-blend yarns</span></span>
+  <h1 style="margin-top:16px"><span class="uz">O'zbekistonning eng yirik akril ip ishlab chiqaruvchisi</span><span class="en">Uzbekistan's largest acrylic yarn producer</span></h1>
+  <p class="lead"><span class="uz">Zamonaviy korxonalarimizda trikotaj, to'quv va qo'lda to'qish uchun iplar ishlab chiqaramiz. Nm2 dan Nm60 gacha, bobina, kalava va jgutda bo'yash.</span><span class="en">We spin knitting, weaving and hand-knitting yarns in state-of-the-art facilities. Nm2 to Nm60, dyed on cone, in hank or as tow.</span></p>
+  <div class="acts"><a class="btn" href="#products"><span class="uz">Mahsulotlarni ko'rish</span><span class="en">Explore products</span></a><a class="btn line" href="#contact"><span class="uz">Taklif so'rash</span><span class="en">Request a quote</span></a></div></div>
+ <div class="panel"><div class="ph"><span><span class="uz">Texnik ma'lumot</span><span class="en">Datasheet</span></span><b>ASL-IP / 2026</b></div>
+  <dl><dt><span class="uz">Mahsulot</span><span class="en">Product</span></dt><dd><span class="uz">Akril, aralashmalar</span><span class="en">Acrylic, blends</span></dd>
+   <dt><span class="uz">Nomer</span><span class="en">Count</span></dt><dd>Nm 2–60</dd>
+   <dt>Format</dt><dd><span class="uz">Bobina · Kalava · Jgut</span><span class="en">Cone · Hank · Tow</span></dd>
+   <dt><span class="uz">Elastan</span><span class="en">Elastane</span></dt><dd>PBT · Lycra</dd>
+   <dt>Eksport</dt><dd>18 <span class="uz">mamlakat</span><span class="en">countries</span></dd>
+   <dt><span class="uz">Maydonchalar</span><span class="en">Sites</span></dt><dd>3</dd></dl></div>
+</div></section>
+<div class="ticker" aria-hidden="true"><div class="track">
+ <span class="it"><span class="uz">Akril va akril aralashmali iplar bo'yicha O'zbekistonning eng yirik ishlab chiqaruvchisi</span><span class="en">Uzbekistan's largest producer of acrylic and acrylic-blend yarns</span></span>
+ <span class="it"><span class="uz">Zamonaviy korxonalarimizda trikotaj, to'quv va qo'lda to'qish iplari</span><span class="en">Knitting, weaving and hand-knitting yarns from state-of-the-art facilities</span></span>
+ <span class="it"><span class="uz">20 ga yaqin mamlakatga eksport</span><span class="en">Exporting to nearly 20 countries</span></span>
+ <span class="it dup"><span class="uz">Akril va akril aralashmali iplar bo'yicha O'zbekistonning eng yirik ishlab chiqaruvchisi</span><span class="en">Uzbekistan's largest producer of acrylic and acrylic-blend yarns</span></span>
+ <span class="it dup"><span class="uz">Zamonaviy korxonalarimizda trikotaj, to'quv va qo'lda to'qish iplari</span><span class="en">Knitting, weaving and hand-knitting yarns from state-of-the-art facilities</span></span>
+ <span class="it dup"><span class="uz">20 ga yaqin mamlakatga eksport</span><span class="en">Exporting to nearly 20 countries</span></span>
+</div></div>
+
+<section class="sec" id="products"><div class="wrap">
+ <div class="sec-head"><div><span class="mono"><b>02</b> · <span class="uz">Mahsulotlar</span><span class="en">Products</span></span><h2><span class="uz">Ip</span><span class="en">Yarn</span></h2></div>
+  <p><span class="uz">Trikotaj, to'quv va qo'lda to'qish uchun 100% akril va aralashmali iplar. Har bir partiya mijoz spetsifikatsiyasi bo'yicha ishlab chiqariladi.</span><span class="en">100% acrylic and blended yarns for knitting, weaving and hand-knitting. Every lot is spun to the customer's specification.</span></p></div>
+ <div class="ruler">
+  <svg viewBox="0 0 1000 122" role="img" aria-label="Yarn count ranges: fancy Nm2 to Nm16, worsted Nm4 to Nm60">
+   <g font-family="JetBrains Mono,Menlo,monospace" font-size="11" fill="#8c9aab">
+    <rect x="40" y="8" width="236" height="16" rx="2" fill="#f0a325"/><text x="286" y="20" fill="#c2ccd7" font-size="11.5" letter-spacing="1">FANTAZIYA · FANCY  Nm 2–16</text>
+    <text x="102" y="45" fill="#c2ccd7" font-size="11.5" letter-spacing="1">KAMVOL · WORSTED  Nm 4–60</text><rect x="99" y="51" width="861" height="16" rx="2" fill="#4d84ad"/>
+    <line x1="40" y1="90" x2="960" y2="90" stroke="#243140" stroke-width="1"/>
+    <g stroke="#243140"><line x1="40" y1="84" x2="40" y2="96"/><line x1="99" y1="84" x2="99" y2="96"/><line x1="158" y1="84" x2="158" y2="96"/><line x1="276" y1="84" x2="276" y2="96"/><line x1="394" y1="84" x2="394" y2="96"/><line x1="512" y1="84" x2="512" y2="96"/><line x1="630" y1="84" x2="630" y2="96"/><line x1="748" y1="84" x2="748" y2="96"/><line x1="866" y1="84" x2="866" y2="96"/><line x1="960" y1="84" x2="960" y2="96"/></g>
+    <text x="40" y="114" text-anchor="middle">Nm 2</text><text x="99" y="114" text-anchor="middle">4</text><text x="158" y="114" text-anchor="middle">8</text><text x="276" y="114" text-anchor="middle">16</text><text x="394" y="114" text-anchor="middle">24</text><text x="512" y="114" text-anchor="middle">32</text><text x="630" y="114" text-anchor="middle">40</text><text x="748" y="114" text-anchor="middle">48</text><text x="866" y="114" text-anchor="middle">56</text><text x="960" y="114" text-anchor="middle">60</text>
+   </g>
+  </svg>
+  <div class="legend"><span><i style="background:#f0a325"></i><span class="uz">Fantaziya ip · qalin nomerlar</span><span class="en">Fancy yarn · coarse counts</span></span><span><i style="background:#4d84ad"></i><span class="uz">Kamvol ip · ingichka nomerlargacha</span><span class="en">Worsted yarn · up to fine counts</span></span><span><span class="uz">Nm = metrik nomer (m/g)</span><span class="en">Nm = metric count (m/g)</span></span></div>
+ </div>
+ <div class="grid2">
+  <article class="card"><div class="fig"><canvas data-scene="spinning"></canvas><span class="lab">KMV · Nm 4–60</span></div>
+   <div class="body"><h3><span class="uz">Kamvol ip</span><span class="en">Worsted yarn</span></h3>
+    <p><span class="uz">Mijozlarimiz ehtiyojiga ko'ra Nm4 dan Nm60 gacha bo'lgan iplarni 100% akril, akril-jun, akril-poliamid, akril-neylon aralashmali, elastanli (PBT va laykra) hamda elastansiz ko'rinishda ishlab chiqaramiz.</span><span class="en">We produce yarns from Nm4 to Nm60 to our customers' needs: 100% acrylic, acrylic-wool, acrylic-polyamide and acrylic-nylon blends, with elastane (PBT and lycra) or without.</span></p>
+    <table class="spec"><tr><th><span class="uz">Nomer</span><span class="en">Count</span></th><td>Nm 4 – Nm 60</td></tr><tr><th><span class="uz">Tarkib</span><span class="en">Composition</span></th><td>100% PAN · PAN/WO · PAN/PA · PAN/PA6</td></tr><tr><th><span class="uz">Elastan</span><span class="en">Elastane</span></th><td>PBT / Lycra · <span class="uz">ixtiyoriy</span><span class="en">optional</span></td></tr><tr><th><span class="uz">Qo'llanish</span><span class="en">Use</span></th><td><span class="uz">Trikotaj, to'quv</span><span class="en">Knitting, weaving</span></td></tr></table>
+    <a class="more" href="#contact"><span class="uz">Batafsil</span><span class="en">Details</span></a></div></article>
+  <article class="card"><div class="fig"><canvas data-scene="creel"></canvas><span class="lab">FNT · Nm 2–16</span></div>
+   <div class="body"><h3><span class="uz">Fantaziya ip</span><span class="en">Fancy yarn</span></h3>
+    <p><span class="uz">Nm2 dan Nm16 gacha bo'lgan iplarni mijozlarimiz talab qilgan aralashma va nomerlarda, elastanli (PBT va laykra) va elastansiz, tukli (shardonlangan) va tuksiz ko'rinishda ishlab chiqaramiz.</span><span class="en">We produce yarns from Nm2 to Nm16 in the blends and counts our customers request, with or without elastane (PBT and lycra), brushed or unbrushed.</span></p>
+    <table class="spec"><tr><th><span class="uz">Nomer</span><span class="en">Count</span></th><td>Nm 2 – Nm 16</td></tr><tr><th><span class="uz">Tarkib</span><span class="en">Composition</span></th><td><span class="uz">Mijoz talabiga ko'ra</span><span class="en">To customer request</span></td></tr><tr><th><span class="uz">Elastan</span><span class="en">Elastane</span></th><td>PBT / Lycra · <span class="uz">ixtiyoriy</span><span class="en">optional</span></td></tr><tr><th><span class="uz">Ishlov</span><span class="en">Finish</span></th><td><span class="uz">Tukli (shardon) yoki tuksiz</span><span class="en">Brushed or plain</span></td></tr></table>
+    <a class="more" href="#contact"><span class="uz">Batafsil</span><span class="en">Details</span></a></div></article>
+ </div>
+</div></section>
+
+<section class="sec sec-alt" id="about"><div class="wrap about">
+ <div class="txt"><span class="mono"><b>03</b> · <span class="uz">Biz haqimizda</span><span class="en">About us</span></span>
+  <h2 style="margin-top:14px"><span class="uz">O'zbekistonning <em>eng yirik</em> ip ishlab chiqaruvchisi</span><span class="en">Uzbekistan's <em>largest</em> yarn producer</span></h2>
+  <p class="uz">Akril va akril aralashmali ip ishlab chiqarishda O'zbekistonning eng yirik ishlab chiqaruvchisi bo'lgan ASL IP Markaziy Osiyoning yetakchi korxonalaridan biridir. Jami 18 mamlakatga eksport qilib, O'zbekistondagi akril va akril aralashmali ipga bo'lgan ehtiyojning 45 foizini ASL IP qondiradi.</p>
+  <p class="uz">ASL IP zamonaviy ishlab chiqarish quvvatlari bilan sohadagi mavjud sifatlarni ishlab chiqarish bilan birga, bozor ehtiyojlarini hisobga olib, narx ustunligini taklif etadi va yangi mahsulotlar yaratish ustida ishlab, sohaning yetakchi korxonasi hisoblanadi.</p>
+  <p class="en">ASL IP, the largest producer of acrylic and acrylic-blend yarn in Uzbekistan, is also among the leading producers in Central Asia. Exporting to 18 countries in total, ASL IP meets 45 percent of Uzbekistan's demand for acrylic and acrylic-blend yarn.</p>
+  <p class="en">With state-of-the-art production facilities, ASL IP not only spins the qualities the sector already knows but watches what the market needs, offers a price advantage and keeps developing new products, which makes it the sector's pioneering company.</p></div>
+ <div class="tiles">
+  <div class="tile"><b>18</b><span><span class="uz">Eksport mamlakatlari</span><span class="en">Export countries</span></span></div>
+  <div class="tile"><b>45<small>%</small></b><span><span class="uz">Ichki bozordagi ulush</span><span class="en">Share of domestic demand</span></span></div>
+  <div class="tile"><b>12 000<small>t / yil</small></b><span><span class="uz">Yillik ip quvvati</span><span class="en">Annual yarn capacity</span></span></div>
+  <div class="tile"><b>3</b><span><span class="uz">Ishlab chiqarish maydonchalari</span><span class="en">Production sites</span></span></div>
+  <div class="site"><canvas data-scene="factory" data-brand="#f0a325"></canvas><div class="lab"><b>NAMANGAN</b> · 41.00°N 71.24°E</div></div>
+ </div>
+</div></section>
+
+<section class="sec" id="dyeing"><div class="wrap">
+ <div class="sec-head"><div><span class="mono"><b>04</b> · <span class="uz">Mahsulotlar</span><span class="en">Products</span></span><h2><span class="uz">Bo'yash</span><span class="en">Dyeing</span></h2></div>
+  <p><span class="uz">O'z bo'yash sexlarimizda ip bobina, kalava va jgut ko'rinishida bo'yaladi. Rang retsepturalari laboratoriyada tasdiqlanadi va har partiyada takrorlanadi.</span><span class="en">Our own dyehouses dye yarn on cone, in hank and as tow. Shade recipes are matched in the lab and repeated lot after lot.</span></p></div>
+ <div class="grid2" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))">
+  <article class="card tall"><div class="fig"><canvas data-scene="bobbins"></canvas><span class="lab">BOB</span></div>
+   <div class="body"><h3><span class="uz">Bobina</span><span class="en">Cone</span></h3><p><span class="uz">Yumshoq o'ramli bobinalarda bir xil rang va yuqori ranglilik chidamliligi.</span><span class="en">Even shade and high colour fastness on soft-wound packages.</span></p>
+    <table class="spec"><tr><th><span class="uz">Partiya</span><span class="en">Lot</span></th><td>50 – 1 000 kg</td></tr><tr><th><span class="uz">O'ram</span><span class="en">Package</span></th><td>0,9 – 1,5 kg</td></tr><tr><th><span class="uz">Chidamlilik</span><span class="en">Fastness</span></th><td>4–5 (ISO 105-C06)</td></tr></table></div></article>
+  <article class="card tall"><div class="fig"><canvas data-scene="hanks"></canvas><span class="lab">KLV</span></div>
+   <div class="body"><h3><span class="uz">Kalava</span><span class="en">Hank</span></h3><p><span class="uz">Qo'lda to'qish va hajmli iplar uchun an'anaviy kalava bo'yash.</span><span class="en">Traditional hank dyeing for hand-knitting and bulky yarns.</span></p>
+    <table class="spec"><tr><th><span class="uz">Partiya</span><span class="en">Lot</span></th><td>20 – 300 kg</td></tr><tr><th><span class="uz">Kalava</span><span class="en">Hank</span></th><td>100 – 500 g</td></tr><tr><th><span class="uz">Chidamlilik</span><span class="en">Fastness</span></th><td>4–5 (ISO 105-C06)</td></tr></table></div></article>
+  <article class="card tall"><div class="fig"><canvas data-scene="tow"></canvas><span class="lab">TOW</span></div>
+   <div class="body"><h3>Tow</h3><p><span class="uz">Tola bosqichida bo'yash orqali melanj va to'q ranglarda barqaror natija.</span><span class="en">Fibre-stage dyeing for stable results in melange and deep shades.</span></p>
+    <table class="spec"><tr><th><span class="uz">Partiya</span><span class="en">Lot</span></th><td>500 – 3 000 kg</td></tr><tr><th><span class="uz">Qo'llanish</span><span class="en">Use</span></th><td><span class="uz">Melanj, to'q ranglar</span><span class="en">Melange, deep shades</span></td></tr><tr><th><span class="uz">Chidamlilik</span><span class="en">Fastness</span></th><td>4–5 (ISO 105-C06)</td></tr></table></div></article>
+ </div>
+</div></section>
+
+<section class="sec sec-alt" id="quality"><div class="wrap">
+ <div class="sec-head"><div><span class="mono"><b>05</b> · <span class="uz">Korporativ</span><span class="en">Corporate</span></span><h2><span class="uz">Sifat va sertifikatlar</span><span class="en">Quality and certificates</span></h2></div></div>
+ <div class="chips">
+  <span class="chip">GRS <small><span class="uz">Global qayta ishlash standarti</span><span class="en">Global Recycled Standard</span></small></span>
+  <span class="chip">RCS <small><span class="uz">Qayta ishlangan tarkib</span><span class="en">Recycled Claim Standard</span></small></span>
+  <span class="chip">OEKO-TEX <small>Standard 100</small></span>
+  <span class="chip">ISO 9001 <small><span class="uz">Sifat</span><span class="en">Quality</span></small></span>
+  <span class="chip">ISO 14001 <small><span class="uz">Atrof-muhit</span><span class="en">Environment</span></small></span>
+  <span class="chip">ISO 27001 <small><span class="uz">Axborot xavfsizligi</span><span class="en">Information security</span></small></span>
+  <span class="chip">ISO 50001 <small><span class="uz">Energiya</span><span class="en">Energy</span></small></span>
+ </div>
+ <div class="qgrid">
+  <div><h3><span class="uz">Siyosatlarimiz</span><span class="en">Our policies</span></h3>
+   <ul class="pol">
+    <li><a href="#quality"><span class="uz">Sifat siyosati</span><span class="en">Quality policy</span></a><small>KYS-008</small></li>
+    <li><a href="#quality"><span class="uz">Atrof-muhit siyosati</span><span class="en">Environmental policy</span></a><small>ISO 14001</small></li>
+    <li><a href="#quality"><span class="uz">Energiya siyosati</span><span class="en">Energy policy</span></a><small>ISO 50001</small></li>
+    <li><a href="#quality"><span class="uz">Axborot xavfsizligi siyosati</span><span class="en">Information security policy</span></a><small>ISO 27001</small></li>
+    <li><a href="#quality"><span class="uz">Mehnat muhofazasi va xavfsizlik siyosati</span><span class="en">Occupational health and safety policy</span></a><small>OHS</small></li>
+    <li><a href="#quality"><span class="uz">Cookie siyosati</span><span class="en">Cookie policy</span></a><small>PDF</small></li>
+   </ul></div>
+  <div class="txt"><h3><span class="uz">Laboratoriya nazorati</span><span class="en">Laboratory control</span></h3>
+   <p class="uz">Har bir partiya ip nomeri, burama soni, uzilish kuchi va cho'zilish bo'yicha tekshiriladi. Bo'yalgan iplar yuvish, ishqalanish va yorug'likka chidamlilik testlaridan o'tadi, natijalar sertifikat bilan yetkaziladi.</p>
+   <p class="en">Every lot is checked for count, twist, tenacity and elongation. Dyed yarns pass washing, rubbing and light-fastness tests, and the results ship with the goods as a certificate of analysis.</p></div>
+ </div>
+</div></section>
+
+<section class="sec"><div class="wrap nlrow">
+ <div><h3><span class="uz">Yangiliklar obunasi</span><span class="en">Newsletter</span></h3><p><span class="uz">Yangi mahsulotlar va maxsus takliflardan birinchi bo'lib xabardor bo'ling.</span><span class="en">Be the first to hear about new products and special offers.</span></p></div>
+ <form class="nl" novalidate><div class="fields"><label for="nl-email" hidden>Email</label><input id="nl-email" type="email" name="email" placeholder="Elektron pochta" data-ph-uz="Elektron pochta" data-ph-en="Email address" required><button class="btn" type="submit"><span class="uz">Yuborish</span><span class="en">Send</span></button></div><p class="thanks"><span class="uz">Rahmat! Obuna qabul qilindi.</span><span class="en">Thank you! You are subscribed.</span></p></form>
+</div></section>
+
+<section class="sec sec-alt" id="contact"><div class="wrap">
+ <div class="sec-head"><div><span class="mono"><b>06</b> · <span class="uz">Aloqa</span><span class="en">Contact</span></span><h2><span class="uz">Biz bilan bog'laning</span><span class="en">Get in touch</span></h2></div>
+  <p><span class="uz">Namunalar, narx so'rovlari va texnik savollar uchun bosh ofis yoki fabrikalarimizga murojaat qiling.</span><span class="en">For samples, price enquiries and technical questions, contact the head office or either mill directly.</span></p></div>
+ <div class="loc">
+  <article><h3><span class="uz">Bosh ofis</span><span class="en">Head office</span></h3><p><span class="uz">Toshkent sh., Yunusobod tumani, Amir Temur shoh ko'chasi 107A, 311-ofis</span><span class="en">Amir Temur Avenue 107A, Office 311, Yunusabad district, Tashkent</span></p><div><a href="tel:+998712004560">+998 (71) 200 45 60</a><a href="mailto:info@aslip.uz">info@aslip.uz</a></div><div class="geo">41.33°N 69.29°E<br>UTC+5</div></article>
+  <article><h3><span class="uz">Namangan fabrikasi</span><span class="en">Namangan mill</span></h3><p><span class="uz">Namangan viloyati, Chust tumani, Sanoat zonasi, 12-bino</span><span class="en">Industrial zone, Building 12, Chust district, Namangan region</span></p><div><a href="tel:+998692341020">+998 (69) 234 10 20</a><a href="mailto:namangan@aslip.uz">namangan@aslip.uz</a></div><div class="geo">41.00°N 71.24°E<br><span class="uz">Yigiruv · bo'yash</span><span class="en">Spinning · dyeing</span></div></article>
+  <article><h3><span class="uz">Andijon fabrikasi</span><span class="en">Andijan mill</span></h3><p><span class="uz">Andijon viloyati, Asaka tumani, "Andijon" erkin iqtisodiy zonasi, 7-uchastka</span><span class="en">"Andijan" free economic zone, Lot 7, Asaka district, Andijan region</span></p><div><a href="tel:+998742893040">+998 (74) 289 30 40</a><a href="mailto:andijon@aslip.uz">andijon@aslip.uz</a></div><div class="geo">40.64°N 72.24°E<br><span class="uz">Yigiruv</span><span class="en">Spinning</span></div></article>
+ </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+ <div class="fgrid">
+  <div><a class="logo" href="#top" aria-label="ASL IP"><svg><use href="#logo"/></svg></a><p><span class="uz">Akril va akril aralashmali iplar: kamvol, fantaziya, bobina, kalava va jgutda bo'yash.</span><span class="en">Acrylic and acrylic-blend yarns: worsted, fancy, and dyeing on cone, in hank and as tow.</span></p></div>
+  <div><h4><span class="uz">Korporativ</span><span class="en">Corporate</span></h4><ul><li><a href="#about"><span class="uz">Biz haqimizda</span><span class="en">About us</span></a></li><li><a href="#quality"><span class="uz">Sifat sertifikatlari</span><span class="en">Quality certificates</span></a></li><li><a href="#quality"><span class="uz">Siyosatlar</span><span class="en">Policies</span></a></li><li><a href="#contact"><span class="uz">Yangiliklar</span><span class="en">News</span></a></li></ul></div>
+  <div><h4><span class="uz">Mahsulotlar</span><span class="en">Products</span></h4><ul><li><a href="#products"><span class="uz">Kamvol ip</span><span class="en">Worsted yarn</span></a></li><li><a href="#products"><span class="uz">Fantaziya ip</span><span class="en">Fancy yarn</span></a></li><li><a href="#dyeing"><span class="uz">Bobinada bo'yash</span><span class="en">Cone dyeing</span></a></li><li><a href="#dyeing"><span class="uz">Kalava va jgut</span><span class="en">Hank and tow</span></a></li></ul></div>
+  <div><h4><span class="uz">Ma'lumot</span><span class="en">Information</span></h4><ul><li><a href="#contact"><span class="uz">Yetkazib berish va qaytarish</span><span class="en">Shipping and returns</span></a></li><li><a href="#quality"><span class="uz">Maxfiylik siyosati</span><span class="en">Privacy notice</span></a></li><li><a href="#quality"><span class="uz">Foydalanish shartlari</span><span class="en">Terms of use</span></a></li><li><a href="#contact"><span class="uz">Biz bilan bog'laning</span><span class="en">Contact us</span></a></li></ul></div>
+ </div>
+ <div class="fbot">
+  <span>© 2026 ASL IP · <span class="uz">Barcha huquqlar himoyalangan</span><span class="en">All rights reserved</span></span>
+  <span class="grp"><span class="uz">AslTeks Holding tarkibida</span><span class="en">A member of AslTeks Holding</span></span>
+  <div class="soc"><a href="#top">Facebook</a><a href="#top">Instagram</a><a href="#top">LinkedIn</a><a href="#top">YouTube</a></div>
+ </div>
+</div></footer>
+<!--SCENES-->
+<script>
+(function(){
+ var root=document.documentElement;
+ function setLang(l){root.setAttribute('data-lang',l);root.lang=l;try{localStorage.setItem('aslip-lang',l)}catch(e){}
+  document.querySelectorAll('[data-setlang]').forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-setlang')===l))});
+  document.querySelectorAll('[data-ph-uz]').forEach(function(i){i.placeholder=l==='uz'?i.getAttribute('data-ph-uz'):i.getAttribute('data-ph-en')});}
+ document.querySelectorAll('[data-setlang]').forEach(function(b){b.addEventListener('click',function(){setLang(b.getAttribute('data-setlang'))})});
+ setLang(root.getAttribute('data-lang')||'uz');
+ var burger=document.querySelector('.burger'),nav=document.getElementById('nav');
+ if(burger){burger.addEventListener('click',function(){var o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',String(o))});
+  nav.addEventListener('click',function(e){if(e.target.closest('a')){nav.classList.remove('open');burger.setAttribute('aria-expanded','false')}});}
+ document.querySelectorAll('form.nl').forEach(function(f){f.addEventListener('submit',function(e){e.preventDefault();var inp=f.querySelector('input');if(inp&&inp.value.indexOf('@')>0){f.classList.add('done')}else if(inp){inp.focus()}})});
+})();
+</script>

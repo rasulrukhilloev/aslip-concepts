@@ -1,0 +1,341 @@
+<title>ASL IP Sanoat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Big+Shoulders+Display:wght@600;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{--bg:#ffffff;--bg2:#f5f3f8;--bg3:#ebe7f0;--ink:#1f1a29;--muted:#665e75;--line:#e3dfe9;--brand:#4b2a75;--brand-deep:#33194f;--brand-t:#4b2a75;--on-brand:#ffffff;--steel:#2f5f7f;--steel-t:#2f5f7f;--logo-bg:#ffffff;--shadow:0 12px 32px rgba(51,25,79,.12);
+--fd:'Big Shoulders Display','Arial Narrow',Impact,sans-serif;--fb:'Source Sans 3','Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15121b;--bg2:#1c1824;--bg3:#241f2e;--ink:#efecf4;--muted:#aaa3b8;--line:#2f2a3a;--brand-t:#b79ee6;--steel-t:#7fb0d0;--logo-bg:#15121b;--shadow:0 12px 32px rgba(0,0,0,.45)}}
+:root[data-theme="dark"]{--bg:#15121b;--bg2:#1c1824;--bg3:#241f2e;--ink:#efecf4;--muted:#aaa3b8;--line:#2f2a3a;--brand-t:#b79ee6;--steel-t:#7fb0d0;--logo-bg:#15121b;--shadow:0 12px 32px rgba(0,0,0,.45)}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.55 var(--fb);-webkit-font-smoothing:antialiased}
+:root[data-lang="uz"] .en,:root[data-lang="en"] .uz{display:none!important}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+@media (max-width:640px){.wrap{width:calc(100% - 32px)}}
+h1,h2,h3{font-family:var(--fd);font-weight:800;line-height:.95;margin:0;text-wrap:balance;text-transform:uppercase}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--steel-t);outline-offset:3px}
+canvas{display:block;width:100%;height:100%}
+.eyebrow{font-family:var(--fd);font-weight:700;font-size:16px;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-t);display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:28px;height:3px;background:var(--brand-t);flex:none}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;background:var(--brand);color:var(--on-brand);font-family:var(--fd);font-weight:700;font-size:18px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer;line-height:1}
+.btn:hover{background:var(--brand-deep)}
+.btn.ghost{background:transparent;color:inherit;box-shadow:inset 0 0 0 2px currentColor}
+.btn.ghost:hover{background:rgba(255,255,255,.12)}
+.more{font-family:var(--fd);font-weight:700;font-size:18px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--brand-t);display:inline-flex;gap:8px;align-items:center}
+.more::after{content:"";width:9px;height:9px;border-top:2px solid currentColor;border-right:2px solid currentColor;transform:rotate(45deg)}
+/* top bar */
+.topbar{background:var(--brand-deep);color:#fff;font-size:14px}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;min-height:38px;gap:16px}
+.topbar .ct{display:flex;gap:22px;flex-wrap:wrap}
+.topbar .ct a{text-decoration:none;opacity:.92}
+.topbar .ct a:hover{opacity:1;text-decoration:underline}
+.lang{display:flex;gap:2px;background:rgba(255,255,255,.14);padding:2px;border-radius:2px}
+.lang button{background:transparent;border:0;color:#fff;font:700 12px/1 var(--fb);letter-spacing:.1em;padding:6px 10px;cursor:pointer;border-radius:2px}
+.lang button[aria-pressed="true"]{background:#fff;color:var(--brand-deep)}
+@media (max-width:640px){.topbar .ct a:first-child{display:none}}
+/* header */
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--bg);border-bottom:1px solid var(--line)}
+.hdr .wrap{display:flex;align-items:center;gap:28px;min-height:80px;position:relative}
+.logo{display:block;color:var(--brand-t);height:46px;width:180px;flex:none}
+.logo svg{width:100%;height:100%;display:block;overflow:visible}
+.nav{margin-left:auto;display:flex;gap:4px;align-items:center;list-style:none;padding:0;margin-block:0}
+.nav li{position:relative}
+.nav>li>a,.nav>li>button{display:block;padding:10px 12px;font-family:var(--fd);font-weight:700;font-size:20px;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;color:var(--ink);background:none;border:0;cursor:pointer;line-height:1}
+.nav>li>a:hover,.nav>li>button:hover,.nav>li:focus-within>button{color:var(--brand-t)}
+.nav>li>button::after{content:"";display:inline-block;width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);margin:0 0 4px 8px}
+.sub{position:absolute;top:100%;left:0;min-width:230px;background:var(--bg);border:1px solid var(--line);box-shadow:var(--shadow);padding:8px 0;display:none;z-index:5;list-style:none;margin:0}
+.nav li:hover>.sub,.nav li:focus-within>.sub{display:block}
+.sub a{display:block;padding:9px 18px;text-decoration:none;font-size:16px}
+.sub a:hover{background:var(--bg2);color:var(--brand-t)}
+.hdr .cta{flex:none}
+.burger{display:none;margin-left:auto;background:none;border:2px solid var(--line);width:46px;height:42px;border-radius:2px;cursor:pointer;color:var(--ink);flex-direction:column;justify-content:center;align-items:center;gap:5px}
+.burger i{display:block;width:20px;height:2px;background:currentColor}
+@media (max-width:960px){
+ .nav{display:none}
+ .nav.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 20px 18px;align-items:stretch;gap:0;box-shadow:var(--shadow)}
+ .nav.open>li>a,.nav.open>li>button{width:100%;text-align:left;padding:12px 0;border-bottom:1px solid var(--line)}
+ .sub{position:static;display:block;border:0;box-shadow:none;padding:2px 0 8px 14px}
+ .burger{display:flex}
+ .hdr .cta{display:none}
+}
+/* hero */
+.hero{position:relative;background:#1b2530;color:#fff;overflow:hidden;height:clamp(470px,46vw,640px)}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity .9s ease;pointer-events:none}
+.slide.is-active{opacity:1;pointer-events:auto}
+.slide canvas{position:absolute;inset:0}
+.slide::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(22,12,42,.82) 0%,rgba(22,12,42,.55) 42%,rgba(22,12,42,.08) 100%)}
+.slide .txt{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center;gap:22px;padding-block:40px 80px}
+.slide .eyebrow{color:#e6dcf5}
+.slide .eyebrow::before{background:#e6dcf5}
+.slide h1{font-size:clamp(42px,5.4vw,78px);max-width:15ch;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.slide p{max-width:52ch;font-size:19px;color:#e9e4f2}
+.hero .ctl{position:absolute;z-index:3;left:0;right:0;bottom:26px}
+.hero .ctl .wrap{display:flex;align-items:center;justify-content:space-between}
+.dots{display:flex;gap:8px}
+.dot{width:34px;height:4px;border:0;background:rgba(255,255,255,.35);cursor:pointer;padding:0}
+.dot[aria-current="true"]{background:#fff}
+.arr{display:flex;gap:8px}
+.arr button{width:44px;height:44px;border:1px solid rgba(255,255,255,.45);background:rgba(10,8,20,.35);color:#fff;cursor:pointer;font-size:0;position:relative}
+.arr button::after{content:"";position:absolute;width:10px;height:10px;border-top:2px solid #fff;border-right:2px solid #fff;top:50%;left:50%;transform:translate(-50%,-50%) rotate(45deg)}
+.arr .prev::after{transform:translate(-40%,-50%) rotate(-135deg)}
+.arr button:hover{background:var(--brand)}
+/* sections */
+.sec{padding-block:clamp(56px,7vw,96px)}
+.sec-alt{background:var(--bg2)}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px 40px;margin-bottom:38px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(40px,4.8vw,64px);margin-top:10px}
+.sec-head p{max-width:58ch;color:var(--muted);font-size:17px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:28px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:28px}
+.card{background:var(--bg);border:1px solid var(--line);display:flex;flex-direction:column}
+.fig{position:relative;overflow:hidden;background:#3a3f48}
+.card .fig{aspect-ratio:16/10}
+.card.tall .fig{aspect-ratio:4/5}
+.tag{position:absolute;left:0;bottom:0;background:var(--brand);color:#fff;font-family:var(--fd);font-weight:800;font-size:30px;letter-spacing:.1em;padding:8px 18px;text-transform:uppercase;line-height:1}
+.card .body{padding:24px 26px 28px;display:flex;flex-direction:column;gap:14px;flex:1}
+.card h3{font-size:32px}
+.card .body p{color:var(--muted)}
+.spec{display:flex;gap:8px;flex-wrap:wrap}
+.spec span{font:600 12px/1 var(--fb);letter-spacing:.08em;text-transform:uppercase;padding:7px 10px;background:var(--bg2);border:1px solid var(--line);color:var(--muted);font-variant-numeric:tabular-nums}
+.card .more{margin-top:auto}
+/* about */
+.about{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:start}
+.about h2{font-size:clamp(56px,7.4vw,110px);line-height:.88;margin-top:12px}
+.about h2 em{font-style:normal;color:var(--brand-t)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px;border-top:3px solid var(--brand-t);padding-top:22px}
+.stat b{display:block;font-family:var(--fd);font-weight:800;font-size:clamp(40px,4.5vw,58px);line-height:1;color:var(--brand-t);font-variant-numeric:tabular-nums}
+.stat span{display:block;margin-top:6px;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;font-weight:600;line-height:1.3}
+.about .txt p{max-width:60ch;font-size:18px}
+.about .txt p+p{margin-top:16px}
+.about .fig{aspect-ratio:2/1;margin-top:26px;border:1px solid var(--line)}
+@media (max-width:900px){.about{grid-template-columns:1fr;gap:36px}}
+/* quality */
+.certs{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:22px 14px;margin-bottom:48px}
+.cert{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;color:var(--brand-t)}
+.cert svg{width:88px;height:88px}
+.cert span{font-size:13px;color:var(--muted);line-height:1.3}
+.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.qgrid h3{font-size:30px;margin-bottom:14px}
+.pol{margin:0;padding:0;list-style:none}
+.pol li{border-bottom:1px solid var(--line);padding:12px 0;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.pol a{text-decoration:none;font-weight:600}
+.pol a:hover{color:var(--brand-t)}
+.pol small{color:var(--muted);font-size:13px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+@media (max-width:800px){.qgrid{grid-template-columns:1fr}}
+/* newsletter */
+.band{background:var(--brand);color:#fff;padding-block:44px}
+.band .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px 40px;flex-wrap:wrap}
+.band h3{font-size:34px}
+.band p{color:#e6dcf5;margin-top:6px}
+.nl{display:flex;gap:0;flex:1 1 380px;max-width:520px}
+.nl .fields{display:flex;width:100%}
+.nl input{flex:1;min-width:0;border:0;padding:14px 16px;font:400 16px var(--fb);background:#fff;color:#1f1a29}
+.nl .btn{background:var(--brand-deep)}
+.nl .btn:hover{background:#1f0e33}
+.nl .thanks{display:none;font-weight:600}
+.nl.done .fields{display:none}
+.nl.done .thanks{display:block}
+/* contact */
+.loc{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:28px}
+.loc article{border-top:3px solid var(--brand-t);padding-top:18px}
+.loc h3{font-size:28px;margin-bottom:10px}
+.loc p{color:var(--muted)}
+.loc a{display:block;text-decoration:none;font-weight:600;margin-top:6px}
+.loc a:hover{color:var(--brand-t)}
+/* footer */
+footer{background:#1a1424;color:#d9d3e3;--logo-bg:#1a1424;padding-block:56px 28px}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:36px}
+footer .logo{color:#fff;margin-bottom:16px}
+footer p{color:#b3aac4;max-width:38ch;font-size:15px}
+footer h4{font-family:var(--fd);font-weight:700;font-size:20px;letter-spacing:.1em;text-transform:uppercase;margin:0 0 14px;color:#fff}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+footer li a{text-decoration:none;color:#c9c1d8;font-size:15px}
+footer li a:hover{color:#fff;text-decoration:underline}
+.fbot{border-top:1px solid #2f2740;margin-top:44px;padding-top:22px;display:flex;justify-content:space-between;align-items:center;gap:16px 24px;flex-wrap:wrap;font-size:14px;color:#9c92b0}
+.soc{display:flex;gap:8px}
+.soc a{width:36px;height:36px;border:1px solid #3a3150;display:grid;place-items:center;color:#c9c1d8}
+.soc a:hover{background:var(--brand);color:#fff;border-color:var(--brand)}
+.soc svg{width:18px;height:18px;fill:currentColor}
+.grp{font-family:'Alfa Slab One',Georgia,serif;font-size:15px;letter-spacing:.04em;color:#c9c1d8}
+@media (max-width:900px){.fgrid{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.fgrid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.slide{transition:none}}
+</style>
+<script>(function(){var l='uz';try{l=localStorage.getItem('aslip-lang')||l}catch(e){}var r=document.documentElement;r.setAttribute('data-lang',l);r.lang=l;})();</script>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="logo" viewBox="0 0 250 64"><g transform="translate(34,42)"><ellipse rx="32" ry="10" fill="currentColor"/><path d="M-9 -10 L 4 -10 L -2 10 L -15 10 Z" style="fill:var(--logo-bg,#fff)"/><rect x="-32" y="-1.2" width="18" height="2.4" style="fill:var(--logo-bg,#fff)"/></g><text x="78" y="52" font-family="'Alfa Slab One',Georgia,serif" font-size="40" fill="currentColor" letter-spacing="1">ASL IP</text></symbol></svg>
+
+<div class="topbar"><div class="wrap">
+ <div class="ct"><a href="tel:+998712004560">+998 (71) 200 45 60</a><a href="mailto:info@aslip.uz">info@aslip.uz</a></div>
+ <div class="lang" role="group" aria-label="Language"><button type="button" data-setlang="uz" aria-pressed="true">UZ</button><button type="button" data-setlang="en" aria-pressed="false">EN</button></div>
+</div></div>
+
+<header class="hdr"><div class="wrap">
+ <a class="logo" href="#top" aria-label="ASL IP"><svg><use href="#logo"/></svg></a>
+ <button class="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu"><i></i><i></i><i></i></button>
+ <ul class="nav" id="nav">
+  <li><button type="button"><span class="uz">Korporativ</span><span class="en">Corporate</span></button>
+   <ul class="sub"><li><a href="#about"><span class="uz">Biz haqimizda</span><span class="en">About us</span></a></li><li><a href="#quality"><span class="uz">Sifat sertifikatlari</span><span class="en">Quality certificates</span></a></li><li><a href="#about"><span class="uz">Videolar</span><span class="en">Videos</span></a></li></ul></li>
+  <li><button type="button"><span class="uz">Mahsulotlar</span><span class="en">Products</span></button>
+   <ul class="sub"><li><a href="#products"><span class="uz">Ip</span><span class="en">Yarn</span></a></li><li><a href="#dyeing"><span class="uz">Bo'yash</span><span class="en">Dyeing</span></a></li></ul></li>
+  <li><a href="#quality"><span class="uz">Siyosatlar</span><span class="en">Policies</span></a></li>
+  <li><a href="#contact"><span class="uz">Yangiliklar</span><span class="en">News</span></a></li>
+  <li><a href="#contact"><span class="uz">Aloqa</span><span class="en">Contact</span></a></li>
+ </ul>
+ <a class="btn cta" href="#contact"><span class="uz">Taklif so'rash</span><span class="en">Request a quote</span></a>
+</div></header>
+
+<main id="top">
+<section class="hero" aria-roledescription="carousel">
+ <div class="slide is-active" aria-hidden="false"><canvas data-scene="cones" data-tint="#4c7ea3"></canvas>
+  <div class="wrap txt"><span class="eyebrow"><span class="uz">Akril ip</span><span class="en">Acrylic yarn</span></span>
+   <h1><span class="uz">Akril va akril aralashmali iplar bo'yicha O'zbekistonning eng yirik ishlab chiqaruvchisi</span><span class="en">Uzbekistan's largest producer of acrylic and acrylic-blend yarns</span></h1>
+   <p><span class="uz">Nm2 dan Nm60 gacha kamvol va fantaziya iplar, bobina, kalava va jgutda bo'yash.</span><span class="en">Worsted and fancy yarns from Nm2 to Nm60, dyed on cone, in hank or as tow.</span></p>
+   <div><a class="btn" href="#products"><span class="uz">Mahsulotlarni ko'rish</span><span class="en">Explore products</span></a></div></div></div>
+ <div class="slide" aria-hidden="true"><canvas data-scene="hall" data-tint="#4c7ea3"></canvas>
+  <div class="wrap txt"><span class="eyebrow"><span class="uz">Ishlab chiqarish</span><span class="en">Production</span></span>
+   <h1><span class="uz">Zamonaviy korxonalarimizda trikotaj, to'quv va qo'lda to'qish uchun iplar ishlab chiqaramiz</span><span class="en">We spin knitting, weaving and hand-knitting yarns in state-of-the-art facilities</span></h1>
+   <p><span class="uz">Namangan va Andijondagi ikki fabrika, Toshkentdagi bosh ofis.</span><span class="en">Two mills in Namangan and Andijan, head office in Tashkent.</span></p>
+   <div><a class="btn" href="#about"><span class="uz">Biz haqimizda</span><span class="en">About us</span></a></div></div></div>
+ <div class="slide" aria-hidden="true"><canvas data-scene="cans" data-tint="#4c7ea3"></canvas>
+  <div class="wrap txt"><span class="eyebrow"><span class="uz">Eksport</span><span class="en">Export</span></span>
+   <h1><span class="uz">20 ga yaqin mamlakatga eksport...</span><span class="en">Exporting to nearly 20 countries...</span></h1>
+   <p><span class="uz">Markaziy Osiyo, Kavkaz, Yevropa va Yaqin Sharq bozorlari uchun barqaror sifat.</span><span class="en">Consistent quality for markets across Central Asia, the Caucasus, Europe and the Middle East.</span></p>
+   <div><a class="btn" href="#contact"><span class="uz">Bog'lanish</span><span class="en">Get in touch</span></a></div></div></div>
+ <div class="ctl"><div class="wrap">
+  <div class="dots" role="tablist"><button class="dot" type="button" aria-current="true" aria-label="1"></button><button class="dot" type="button" aria-current="false" aria-label="2"></button><button class="dot" type="button" aria-current="false" aria-label="3"></button></div>
+  <div class="arr"><button class="prev" type="button" aria-label="Previous">Prev</button><button class="next" type="button" aria-label="Next">Next</button></div>
+ </div></div>
+</section>
+
+<section class="sec" id="products"><div class="wrap">
+ <div class="sec-head"><div><span class="eyebrow"><span class="uz">Mahsulotlar</span><span class="en">Products</span></span><h2><span class="uz">Ip</span><span class="en">Yarn</span></h2></div>
+  <p><span class="uz">Trikotaj, to'quv va qo'lda to'qish uchun 100% akril va aralashmali iplar. Har bir partiya mijoz spetsifikatsiyasi bo'yicha ishlab chiqariladi.</span><span class="en">100% acrylic and blended yarns for knitting, weaving and hand-knitting. Every lot is spun to the customer's specification.</span></p></div>
+ <div class="grid2">
+  <article class="card"><div class="fig"><canvas data-scene="spinning"></canvas><span class="tag"><span class="uz">Kamvol</span><span class="en">Worsted</span></span></div>
+   <div class="body"><h3><span class="uz">Kamvol ip</span><span class="en">Worsted yarn</span></h3>
+    <p><span class="uz">Mijozlarimiz ehtiyojiga ko'ra Nm4 dan Nm60 gacha bo'lgan iplarni 100% akril, akril-jun, akril-poliamid, akril-neylon aralashmali, elastanli (PBT va laykra) hamda elastansiz ko'rinishda ishlab chiqaramiz.</span><span class="en">We produce yarns from Nm4 to Nm60 to our customers' needs: 100% acrylic, acrylic-wool, acrylic-polyamide and acrylic-nylon blends, with elastane (PBT and lycra) or without.</span></p>
+    <div class="spec"><span>Nm 4–60</span><span>100% PAN</span><span>PAN/WO</span><span>PAN/PA</span><span>PBT · Lycra</span></div>
+    <a class="more" href="#contact"><span class="uz">Batafsil</span><span class="en">Details</span></a></div></article>
+  <article class="card"><div class="fig"><canvas data-scene="creel"></canvas><span class="tag"><span class="uz">Fantaziya</span><span class="en">Fancy</span></span></div>
+   <div class="body"><h3><span class="uz">Fantaziya ip</span><span class="en">Fancy yarn</span></h3>
+    <p><span class="uz">Nm2 dan Nm16 gacha bo'lgan iplarni mijozlarimiz talab qilgan aralashma va nomerlarda, elastanli (PBT va laykra) va elastansiz, tukli (shardonlangan) va tuksiz ko'rinishda ishlab chiqaramiz.</span><span class="en">We produce yarns from Nm2 to Nm16 in the blends and counts our customers request, with or without elastane (PBT and lycra), brushed or unbrushed.</span></p>
+    <div class="spec"><span>Nm 2–16</span><span class="uz">Tukli / tuksiz</span><span class="en">Brushed / plain</span><span>PBT · Lycra</span></div>
+    <a class="more" href="#contact"><span class="uz">Batafsil</span><span class="en">Details</span></a></div></article>
+ </div>
+</div></section>
+
+<section class="sec sec-alt" id="about"><div class="wrap about">
+ <div><span class="eyebrow"><span class="uz">Biz haqimizda</span><span class="en">About us</span></span>
+  <h2><span class="uz">O'zbekistonning <em>eng yirik</em> ip ishlab chiqaruvchisi</span><span class="en">Uzbekistan's <em>largest</em> yarn producer</span></h2>
+  <div class="stats">
+   <div class="stat"><b>18</b><span><span class="uz">Eksport mamlakatlari</span><span class="en">Export countries</span></span></div>
+   <div class="stat"><b>45%</b><span><span class="uz">Ichki bozordagi ulush</span><span class="en">Share of domestic demand</span></span></div>
+   <div class="stat"><b>3</b><span><span class="uz">Ishlab chiqarish maydonchalari</span><span class="en">Production sites</span></span></div>
+  </div></div>
+ <div class="txt">
+  <p class="uz">Akril va akril aralashmali ip ishlab chiqarishda O'zbekistonning eng yirik ishlab chiqaruvchisi bo'lgan ASL IP Markaziy Osiyoning yetakchi korxonalaridan biridir. Jami 18 mamlakatga eksport qilib, O'zbekistondagi akril va akril aralashmali ipga bo'lgan ehtiyojning 45 foizini ASL IP qondiradi.</p>
+  <p class="uz">ASL IP zamonaviy ishlab chiqarish quvvatlari bilan sohadagi mavjud sifatlarni ishlab chiqarish bilan birga, bozor ehtiyojlarini hisobga olib, narx ustunligini taklif etadi va yangi mahsulotlar yaratish ustida ishlab, sohaning yetakchi korxonasi hisoblanadi.</p>
+  <p class="en">ASL IP, the largest producer of acrylic and acrylic-blend yarn in Uzbekistan, is also among the leading producers in Central Asia. Exporting to 18 countries in total, ASL IP meets 45 percent of Uzbekistan's demand for acrylic and acrylic-blend yarn.</p>
+  <p class="en">With state-of-the-art production facilities, ASL IP not only spins the qualities the sector already knows but watches what the market needs, offers a price advantage and keeps developing new products, which makes it the sector's pioneering company.</p>
+  <div class="fig"><canvas data-scene="factory" data-brand="#4b2a75"></canvas></div>
+ </div>
+</div></section>
+
+<section class="sec" id="dyeing"><div class="wrap">
+ <div class="sec-head"><div><span class="eyebrow"><span class="uz">Mahsulotlar</span><span class="en">Products</span></span><h2><span class="uz">Bo'yash</span><span class="en">Dyeing</span></h2></div>
+  <p><span class="uz">O'z bo'yash sexlarimizda ip bobina, kalava va jgut ko'rinishida bo'yaladi. Rang retsepturalari laboratoriyada tasdiqlanadi va har partiyada takrorlanadi.</span><span class="en">Our own dyehouses dye yarn on cone, in hank and as tow. Shade recipes are matched in the lab and repeated lot after lot.</span></p></div>
+ <div class="grid3">
+  <article class="card tall"><div class="fig"><canvas data-scene="bobbins"></canvas><span class="tag"><span class="uz">Bobina</span><span class="en">Cone</span></span></div>
+   <div class="body"><p><span class="uz">Yumshoq o'ramli bobinalarda bir xil rang va yuqori ranglilik chidamliligi.</span><span class="en">Even shade and high colour fastness on soft-wound packages.</span></p></div></article>
+  <article class="card tall"><div class="fig"><canvas data-scene="hanks"></canvas><span class="tag"><span class="uz">Kalava</span><span class="en">Hank</span></span></div>
+   <div class="body"><p><span class="uz">Qo'lda to'qish va hajmli iplar uchun an'anaviy kalava bo'yash.</span><span class="en">Traditional hank dyeing for hand-knitting and bulky yarns.</span></p></div></article>
+  <article class="card tall"><div class="fig"><canvas data-scene="tow"></canvas><span class="tag">Tow</span></div>
+   <div class="body"><p><span class="uz">Tola bosqichida bo'yash orqali melanj va to'q ranglarda barqaror natija.</span><span class="en">Fibre-stage dyeing for stable results in melange and deep shades.</span></p></div></article>
+ </div>
+</div></section>
+
+<section class="sec sec-alt" id="quality"><div class="wrap">
+ <div class="sec-head"><div><span class="eyebrow"><span class="uz">Korporativ</span><span class="en">Corporate</span></span><h2><span class="uz">Sifat va sertifikatlar</span><span class="en">Quality and certificates</span></h2></div></div>
+ <div class="certs">
+  <div class="cert"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="32" cy="32" r="24" fill="none" stroke="currentColor" stroke-width=".8" stroke-dasharray="2 3"/><text x="32" y="37" text-anchor="middle" font-size="13" font-weight="700" fill="currentColor" font-family="Source Sans 3,sans-serif">GRS</text></svg><span><span class="uz">Global qayta ishlash standarti</span><span class="en">Global Recycled Standard</span></span></div>
+  <div class="cert"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="32" cy="32" r="24" fill="none" stroke="currentColor" stroke-width=".8" stroke-dasharray="2 3"/><text x="32" y="37" text-anchor="middle" font-size="13" font-weight="700" fill="currentColor" font-family="Source Sans 3,sans-serif">RCS</text></svg><span><span class="uz">Qayta ishlangan tarkib</span><span class="en">Recycled Claim Standard</span></span></div>
+  <div class="cert"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="32" cy="32" r="24" fill="none" stroke="currentColor" stroke-width=".8" stroke-dasharray="2 3"/><text x="32" y="30" text-anchor="middle" font-size="9" font-weight="700" fill="currentColor" font-family="Source Sans 3,sans-serif">OEKO-TEX</text><text x="32" y="42" text-anchor="middle" font-size="9" font-weight="700" fill="currentColor" font-family="Source Sans 3,sans-serif">STD 100</text></svg><span>OEKO-TEX Standard 100</span></div>
+  <div class="cert"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="32" cy="32" r="24" fill="none" stroke="currentColor" stroke-width=".8" stroke-dasharray="2 3"/><text x="32" y="30" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor" font-family="Source Sans 3,sans-serif">ISO</text><text x="32" y="43" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor" font-family="Source Sans 3,sans-serif">9001</text></svg><span><span class="uz">Sifat menejmenti</span><span class="en">Quality management</span></span></div>
+  <div class="cert"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="32" cy="32" r="24" fill="none" stroke="currentColor" stroke-width=".8" stroke-dasharray="2 3"/><text x="32" y="30" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor" font-family="Source Sans 3,sans-serif">ISO</text><text x="32" y="43" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor" font-family="Source Sans 3,sans-serif">14001</text></svg><span><span class="uz">Atrof-muhit menejmenti</span><span class="en">Environmental management</span></span></div>
+  <div class="cert"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="32" cy="32" r="24" fill="none" stroke="currentColor" stroke-width=".8" stroke-dasharray="2 3"/><text x="32" y="30" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor" font-family="Source Sans 3,sans-serif">ISO</text><text x="32" y="43" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor" font-family="Source Sans 3,sans-serif">27001</text></svg><span><span class="uz">Axborot xavfsizligi</span><span class="en">Information security</span></span></div>
+  <div class="cert"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="32" cy="32" r="24" fill="none" stroke="currentColor" stroke-width=".8" stroke-dasharray="2 3"/><text x="32" y="30" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor" font-family="Source Sans 3,sans-serif">ISO</text><text x="32" y="43" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor" font-family="Source Sans 3,sans-serif">50001</text></svg><span><span class="uz">Energiya menejmenti</span><span class="en">Energy management</span></span></div>
+ </div>
+ <div class="qgrid">
+  <div><h3><span class="uz">Siyosatlarimiz</span><span class="en">Our policies</span></h3>
+   <ul class="pol">
+    <li><a href="#quality"><span class="uz">Sifat siyosati</span><span class="en">Quality policy</span></a><small>KYS-008</small></li>
+    <li><a href="#quality"><span class="uz">Atrof-muhit siyosati</span><span class="en">Environmental policy</span></a><small>ISO 14001</small></li>
+    <li><a href="#quality"><span class="uz">Energiya siyosati</span><span class="en">Energy policy</span></a><small>ISO 50001</small></li>
+    <li><a href="#quality"><span class="uz">Axborot xavfsizligi siyosati</span><span class="en">Information security policy</span></a><small>ISO 27001</small></li>
+    <li><a href="#quality"><span class="uz">Mehnat muhofazasi va xavfsizlik siyosati</span><span class="en">Occupational health and safety policy</span></a><small>OHS</small></li>
+    <li><a href="#quality"><span class="uz">Cookie siyosati</span><span class="en">Cookie policy</span></a><small>PDF</small></li>
+   </ul></div>
+  <div><h3><span class="uz">Laboratoriya nazorati</span><span class="en">Laboratory control</span></h3>
+   <p class="uz">Har bir partiya ip nomeri, burama soni, uzilish kuchi va cho'zilish bo'yicha tekshiriladi. Bo'yalgan iplar yuvish, ishqalanish va yorug'likka chidamlilik testlaridan o'tadi, natijalar sertifikat bilan yetkaziladi.</p>
+   <p class="en">Every lot is checked for count, twist, tenacity and elongation. Dyed yarns pass washing, rubbing and light-fastness tests, and the results ship with the goods as a certificate of analysis.</p></div>
+ </div>
+</div></section>
+
+<section class="band"><div class="wrap">
+ <div><h3><span class="uz">Yangiliklar obunasi</span><span class="en">Newsletter</span></h3><p><span class="uz">Yangi mahsulotlar va maxsus takliflardan birinchi bo'lib xabardor bo'ling.</span><span class="en">Be the first to hear about new products and special offers.</span></p></div>
+ <form class="nl" novalidate><div class="fields"><label for="nl-email" class="uz" hidden>Elektron pochta</label><label for="nl-email-en" class="en" hidden>Email address</label><input id="nl-email" type="email" name="email" placeholder="Elektron pochta" data-ph-uz="Elektron pochta" data-ph-en="Email address" required><button class="btn" type="submit"><span class="uz">Yuborish</span><span class="en">Send</span></button></div><p class="thanks"><span class="uz">Rahmat! Obuna qabul qilindi.</span><span class="en">Thank you! You are subscribed.</span></p></form>
+</div></section>
+
+<section class="sec" id="contact"><div class="wrap">
+ <div class="sec-head"><div><span class="eyebrow"><span class="uz">Aloqa</span><span class="en">Contact</span></span><h2><span class="uz">Biz bilan bog'laning</span><span class="en">Get in touch</span></h2></div>
+  <p><span class="uz">Namunalar, narx so'rovlari va texnik savollar uchun bosh ofis yoki fabrikalarimizga murojaat qiling.</span><span class="en">For samples, price enquiries and technical questions, contact the head office or either mill directly.</span></p></div>
+ <div class="loc">
+  <article><h3><span class="uz">Bosh ofis</span><span class="en">Head office</span></h3><p><span class="uz">Toshkent sh., Yunusobod tumani, Amir Temur shoh ko'chasi 107A, 311-ofis</span><span class="en">Amir Temur Avenue 107A, Office 311, Yunusabad district, Tashkent</span></p><a href="tel:+998712004560">+998 (71) 200 45 60</a><a href="mailto:info@aslip.uz">info@aslip.uz</a></article>
+  <article><h3><span class="uz">Namangan fabrikasi</span><span class="en">Namangan mill</span></h3><p><span class="uz">Namangan viloyati, Chust tumani, Sanoat zonasi, 12-bino</span><span class="en">Industrial zone, Building 12, Chust district, Namangan region</span></p><a href="tel:+998692341020">+998 (69) 234 10 20</a><a href="mailto:namangan@aslip.uz">namangan@aslip.uz</a></article>
+  <article><h3><span class="uz">Andijon fabrikasi</span><span class="en">Andijan mill</span></h3><p><span class="uz">Andijon viloyati, Asaka tumani, "Andijon" erkin iqtisodiy zonasi, 7-uchastka</span><span class="en">"Andijan" free economic zone, Lot 7, Asaka district, Andijan region</span></p><a href="tel:+998742893040">+998 (74) 289 30 40</a><a href="mailto:andijon@aslip.uz">andijon@aslip.uz</a></article>
+ </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+ <div class="fgrid">
+  <div><a class="logo" href="#top" aria-label="ASL IP"><svg><use href="#logo"/></svg></a><p><span class="uz">Akril va akril aralashmali iplar: kamvol, fantaziya, bobina, kalava va jgutda bo'yash.</span><span class="en">Acrylic and acrylic-blend yarns: worsted, fancy, and dyeing on cone, in hank and as tow.</span></p></div>
+  <div><h4><span class="uz">Korporativ</span><span class="en">Corporate</span></h4><ul><li><a href="#about"><span class="uz">Biz haqimizda</span><span class="en">About us</span></a></li><li><a href="#quality"><span class="uz">Sifat sertifikatlari</span><span class="en">Quality certificates</span></a></li><li><a href="#quality"><span class="uz">Siyosatlar</span><span class="en">Policies</span></a></li><li><a href="#contact"><span class="uz">Yangiliklar</span><span class="en">News</span></a></li></ul></div>
+  <div><h4><span class="uz">Mahsulotlar</span><span class="en">Products</span></h4><ul><li><a href="#products"><span class="uz">Kamvol ip</span><span class="en">Worsted yarn</span></a></li><li><a href="#products"><span class="uz">Fantaziya ip</span><span class="en">Fancy yarn</span></a></li><li><a href="#dyeing"><span class="uz">Bobinada bo'yash</span><span class="en">Cone dyeing</span></a></li><li><a href="#dyeing"><span class="uz">Kalava va jgut</span><span class="en">Hank and tow</span></a></li></ul></div>
+  <div><h4><span class="uz">Ma'lumot</span><span class="en">Information</span></h4><ul><li><a href="#contact"><span class="uz">Yetkazib berish va qaytarish</span><span class="en">Shipping and returns</span></a></li><li><a href="#quality"><span class="uz">Maxfiylik siyosati</span><span class="en">Privacy notice</span></a></li><li><a href="#quality"><span class="uz">Foydalanish shartlari</span><span class="en">Terms of use</span></a></li><li><a href="#contact"><span class="uz">Biz bilan bog'laning</span><span class="en">Contact us</span></a></li></ul></div>
+ </div>
+ <div class="fbot">
+  <span>© 2026 ASL IP. <span class="uz">Barcha huquqlar himoyalangan.</span><span class="en">All rights reserved.</span></span>
+  <span class="grp"><span class="uz">AslTeks Holding tarkibida</span><span class="en">A member of AslTeks Holding</span></span>
+  <div class="soc"><a href="#top" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.6 1.6-1.6h1.7V4.4c-.3 0-1.3-.1-2.5-.1-2.5 0-4.1 1.5-4.1 4.3v2.2H7.4V14h2.8v8z"/></svg></a><a href="#top" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2"/></svg></a><a href="#top" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M6.9 8.5H3.8V20h3.1zM5.4 3.5a1.8 1.8 0 100 3.6 1.8 1.8 0 000-3.6zM20.2 20v-6.3c0-3.4-1.8-4.9-4.2-4.9-1.9 0-2.8 1.1-3.3 1.8V8.5H9.6V20h3.1v-6.2c0-1.6.3-3.2 2.3-3.2s2 1.9 2 3.3V20z"/></svg></a><a href="#top" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M21.6 7.2a2.5 2.5 0 00-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 002.4 7.2 26 26 0 002 12a26 26 0 00.4 4.8 2.5 2.5 0 001.8 1.8c1.6.4 7.8.4 7.8.4s6.2 0 7.8-.4a2.5 2.5 0 001.8-1.8A26 26 0 0022 12a26 26 0 00-.4-4.8zM10 15V9l5.2 3z"/></svg></a></div>
+ </div>
+</div></footer>
+<!--SCENES-->
+<script>
+(function(){
+ var root=document.documentElement;
+ function setLang(l){root.setAttribute('data-lang',l);root.lang=l;try{localStorage.setItem('aslip-lang',l)}catch(e){}
+  document.querySelectorAll('[data-setlang]').forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-setlang')===l))});
+  document.querySelectorAll('[data-ph-uz]').forEach(function(i){i.placeholder=l==='uz'?i.getAttribute('data-ph-uz'):i.getAttribute('data-ph-en')});}
+ document.querySelectorAll('[data-setlang]').forEach(function(b){b.addEventListener('click',function(){setLang(b.getAttribute('data-setlang'))})});
+ setLang(root.getAttribute('data-lang')||'uz');
+ var burger=document.querySelector('.burger'),nav=document.getElementById('nav');
+ if(burger){burger.addEventListener('click',function(){var o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',String(o))});
+  nav.addEventListener('click',function(e){if(e.target.closest('a')){nav.classList.remove('open');burger.setAttribute('aria-expanded','false')}});}
+ var slides=[].slice.call(document.querySelectorAll('.slide')),dots=[].slice.call(document.querySelectorAll('.dot')),i=0,timer=null;
+ var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ function go(n){i=(n+slides.length)%slides.length;slides.forEach(function(s,k){s.classList.toggle('is-active',k===i);s.setAttribute('aria-hidden',String(k!==i))});dots.forEach(function(d,k){d.setAttribute('aria-current',String(k===i))})}
+ function stop(){if(timer)clearInterval(timer);timer=null}
+ function play(){stop();if(!reduce)timer=setInterval(function(){go(i+1)},6500)}
+ dots.forEach(function(d,k){d.addEventListener('click',function(){go(k);play()})});
+ var prev=document.querySelector('.prev'),next=document.querySelector('.next');
+ if(prev)prev.addEventListener('click',function(){go(i-1);play()});
+ if(next)next.addEventListener('click',function(){go(i+1);play()});
+ var hero=document.querySelector('.hero');hero.addEventListener('mouseenter',stop);hero.addEventListener('mouseleave',play);
+ document.addEventListener('visibilitychange',function(){document.hidden?stop():play()});
+ go(0);play();
+ document.querySelectorAll('form.nl').forEach(function(f){f.addEventListener('submit',function(e){e.preventDefault();var inp=f.querySelector('input');if(inp&&inp.value.indexOf('@')>0){f.classList.add('done')}else if(inp){inp.focus()}})});
+})();
+</script>
