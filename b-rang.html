@@ -71,6 +71,97 @@ canvas{display:block;width:100%;height:100%}
 .chip i{display:block;height:58px;border-radius:3px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
 .chip b{display:block;font:600 12.5px/1.2 var(--fb);margin-top:8px}
 .chip small{display:block;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+[hidden]{display:none!important}
+/* pantone card */
+.pantone{padding-block:clamp(40px,5vw,64px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2)}
+.pantone .head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px 40px;flex-wrap:wrap;margin-bottom:22px}
+.pantone h2{font-size:clamp(30px,3.6vw,44px);margin-top:10px}
+.pantone .head p{color:var(--muted);max-width:56ch;margin-top:10px;font-size:15.5px}
+.ptools{display:flex;gap:10px 14px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+.fams{display:flex;gap:6px;flex-wrap:wrap}
+.fams button{background:var(--bg);border:1.5px solid var(--line);border-radius:999px;padding:7px 13px;font:500 13px/1 var(--fb);color:var(--ink);cursor:pointer}
+.fams button:hover{border-color:var(--ink)}
+.fams button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.psearch{margin-left:auto;display:flex;align-items:center;gap:8px;border:1.5px solid var(--line);border-radius:3px;padding:0 10px;background:var(--bg);color:var(--muted)}
+.psearch input{border:0;background:transparent;padding:9px 0;font:400 14px var(--fb);color:var(--ink);min-width:200px;outline:none}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:12px}
+.pchip{position:relative;background:var(--bg);border:1.5px solid var(--line);border-radius:3px;overflow:hidden;cursor:pointer;text-align:left;padding:0;font:inherit;color:inherit;display:flex;flex-direction:column}
+.pchip i{display:block;aspect-ratio:5/4;background:var(--c)}
+.pchip b{display:block;font:600 11.5px/1.2 var(--fb);letter-spacing:.02em;padding:8px 9px 0;font-variant-numeric:tabular-nums}
+.pchip small{display:block;font-size:11px;color:var(--muted);padding:2px 9px 9px;line-height:1.25}
+.pchip:hover{border-color:var(--ink)}
+.pchip[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
+.pchip .ck{position:absolute;top:8px;right:8px;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;display:none;place-items:center;font-size:13px;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.pchip[aria-pressed="true"] .ck{display:grid}
+.pempty{color:var(--muted);padding:24px 0}
+.pnote{margin-top:18px;font-size:12.5px;color:var(--muted)}
+/* selection tray */
+.tray{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translate(-50%,140%);transition:transform .25s ease;background:var(--ink);color:var(--bg);border-radius:6px;padding:10px 12px 10px 16px;display:flex;align-items:center;gap:14px;z-index:60;box-shadow:0 12px 32px rgba(0,0,0,.3);max-width:calc(100% - 32px)}
+.tray.on{transform:translate(-50%,0)}
+.tray .sw{display:flex;gap:4px;flex-wrap:wrap;max-width:120px}
+.tray .sw i{width:16px;height:16px;border-radius:3px;border:1px solid rgba(128,128,128,.4)}
+.tray .n{font-size:14px;white-space:nowrap;font-weight:500}
+.tray .btn{padding:10px 16px;font-size:14px;white-space:nowrap}
+/* order form */
+.order{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(28px,4vw,56px);align-items:start}
+.form{display:grid;gap:26px}
+fieldset{border:0;padding:0;margin:0;min-width:0}
+legend{font:500 12.5px/1 var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;padding:0}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px}
+.opt{position:relative;display:block}
+.opt input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.opt span.box{display:block;border:1.5px solid var(--line);border-radius:3px;padding:12px 14px;font-size:15px;line-height:1.3;background:var(--bg);font-weight:500}
+.opt span.box small{display:block;color:var(--muted);font-size:12.5px;margin-top:2px;font-weight:400}
+.opt input:checked+span.box{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
+.opt input:focus-visible+span.box{outline:3px solid var(--accent-t);outline-offset:2px}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.f2 .full{grid-column:1/-1}
+@media (max-width:560px){.f2{grid-template-columns:1fr}}
+.fld{display:grid;gap:6px;align-content:start}
+.fld label{font-size:14px;font-weight:500}
+.fld label small{color:var(--muted);font-weight:400}
+.fld input,.fld select,.fld textarea{border:1.5px solid var(--line);border-radius:3px;padding:11px 12px;font:400 15px var(--fb);background:var(--bg);color:var(--ink);width:100%;min-width:0}
+.fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--accent);outline:none}
+.fld textarea{min-height:96px;resize:vertical}
+.fmsg{font-size:12.5px;color:#c62828;display:none;margin:0}
+.err .fmsg{display:block}
+.fld.err input,.fld.err select,.fld.err textarea,fieldset.err .sel .none,.addc input.bad{border-color:#c62828}
+.sel{display:grid;gap:8px}
+.sel .crow{display:flex;align-items:center;gap:10px;border:1.5px solid var(--line);border-radius:3px;padding:8px 10px;background:var(--bg)}
+.sel .crow i{width:30px;height:30px;border-radius:3px;flex:none;border:1px solid rgba(0,0,0,.08)}
+.sel .crow .name{flex:1;min-width:0}
+.sel .crow b{display:block;font:600 13px/1.2 var(--fb);font-variant-numeric:tabular-nums}
+.sel .crow small{display:block;color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sel .crow input{width:78px;border:1.5px solid var(--line);border-radius:3px;padding:6px 8px;font:400 13px var(--fb);background:var(--bg);color:var(--ink)}
+.sel .crow input:focus{border-color:var(--accent);outline:none}
+.sel .crow button{background:none;border:0;color:var(--muted);cursor:pointer;font-size:20px;line-height:1;padding:2px 6px}
+.sel .crow button:hover{color:#c62828}
+.sel .none{color:var(--muted);font-size:14px;border:1.5px dashed var(--line);border-radius:3px;padding:14px}
+.addc{display:flex;gap:8px;margin-top:10px}
+.addc input{flex:1;min-width:0;border:1.5px solid var(--line);border-radius:3px;padding:10px 12px;font:400 14px var(--fb);background:var(--bg);color:var(--ink)}
+.addc input:focus{border-color:var(--accent);outline:none}
+.addc .btn{padding:10px 16px;font-size:14px}
+.hint{font-size:13px;color:var(--muted);margin-top:8px}
+.hint a{color:var(--accent-t);text-decoration:none;font-weight:500}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--muted);margin-top:14px}
+.check input{margin-top:3px;accent-color:var(--accent)}
+.check.err{color:#c62828}
+.osum{position:sticky;top:calc(92px + env(safe-area-inset-top,0px));background:var(--bg2);border:1.5px solid var(--line);border-radius:4px;padding:24px}
+.osum h3{font-size:24px}
+.osum dl{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;margin:16px 0 0;font-size:14px}
+.osum dt{color:var(--muted)}
+.osum dd{margin:0;font-weight:500;overflow-wrap:anywhere}
+.osum ol{margin:20px 0 0;padding:16px 0 0 18px;border-top:1px solid var(--line);color:var(--muted);font-size:14px;display:grid;gap:8px}
+.done{display:none;border:1.5px solid var(--accent);border-radius:4px;padding:28px;background:var(--accent-soft)}
+.done h3{font-size:30px;margin-top:8px}
+.done .ref{font-family:var(--fd);font-size:34px;font-variation-settings:"opsz" 144;margin-top:10px;letter-spacing:.02em;font-variant-numeric:tabular-nums}
+.done p{color:var(--muted);margin-top:12px;max-width:52ch}
+.done pre{white-space:pre-wrap;font:400 13.5px/1.5 ui-monospace,Menlo,Consolas,monospace;background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:14px;margin:18px 0;color:var(--ink)}
+.done .acts{display:flex;gap:10px;flex-wrap:wrap}
+.order.sent .form{display:none}
+.order.sent .done{display:block}
+@media (max-width:900px){.order{grid-template-columns:1fr}.osum{position:static}}
+@media (prefers-reduced-motion:reduce){.tray{transition:none}}
 /* sections */
 .sec{padding-block:clamp(60px,8vw,110px)}
 .sec-alt{background:var(--bg2)}
@@ -165,14 +256,15 @@ footer li a:hover{color:var(--accent-t)}
  <ul class="nav" id="nav">
   <li><a href="#about"><span class="uz">Biz haqimizda</span><span class="en">About</span></a></li>
   <li><a href="#products"><span class="uz">Ip</span><span class="en">Yarn</span></a></li>
+  <li><a href="#colors"><span class="uz">Ranglar</span><span class="en">Colours</span></a></li>
   <li><a href="#dyeing"><span class="uz">Bo'yash</span><span class="en">Dyeing</span></a></li>
   <li><a href="#quality"><span class="uz">Sifat</span><span class="en">Quality</span></a></li>
-  <li><a href="#quality"><span class="uz">Siyosatlar</span><span class="en">Policies</span></a></li>
+  <li><a href="#order"><span class="uz">Buyurtma</span><span class="en">Order</span></a></li>
   <li><a href="#contact"><span class="uz">Aloqa</span><span class="en">Contact</span></a></li>
  </ul>
  <div class="tools">
   <div class="lang" role="group" aria-label="Language"><button type="button" data-setlang="uz" aria-pressed="true">UZ</button><button type="button" data-setlang="en" aria-pressed="false">EN</button></div>
-  <a class="btn" href="#contact"><span class="uz">Taklif so'rash</span><span class="en">Request a quote</span></a>
+  <a class="btn" href="#order"><span class="uz">Buyurtma berish</span><span class="en">Place an order</span></a>
   <button class="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu"><i></i><i></i><i></i></button>
  </div>
 </div></header>
@@ -182,31 +274,79 @@ footer li a:hover{color:var(--accent-t)}
  <div><span class="kicker"><span class="uz">Akril va aralashmali iplar · O'zbekiston</span><span class="en">Acrylic and blended yarns · Uzbekistan</span></span>
   <h1><span class="uz">Akril ip bo'yicha O'zbekistonning <em>eng yirik</em> ishlab chiqaruvchisi</span><span class="en">Uzbekistan's <em>largest</em> producer of acrylic yarn</span></h1>
   <p class="lead"><span class="uz">Zamonaviy korxonalarimizda trikotaj, to'quv va qo'lda to'qish uchun Nm2 dan Nm60 gacha iplar ishlab chiqaramiz va 20 ga yaqin mamlakatga eksport qilamiz.</span><span class="en">We spin knitting, weaving and hand-knitting yarns from Nm2 to Nm60 in state-of-the-art facilities and export to nearly 20 countries.</span></p>
-  <div class="acts"><a class="btn" href="#products"><span class="uz">Mahsulotlarni ko'rish</span><span class="en">Explore products</span></a><a class="btn line" href="#about"><span class="uz">Biz haqimizda</span><span class="en">About us</span></a></div></div>
+  <div class="acts"><a class="btn" href="#products"><span class="uz">Mahsulotlarni ko'rish</span><span class="en">Explore products</span></a><a class="btn line" href="#colors"><span class="uz">Ranglar kartasi</span><span class="en">Colour card</span></a></div></div>
  <div class="fig"><canvas data-scene="hanks"></canvas><div class="cap"><b><span class="uz">Kalava bo'yash sexi</span><span class="en">Hank dyehouse</span></b><span class="uz">Namangan fabrikasi</span><span class="en">Namangan mill</span></div></div>
 </div></section>
 
-<div class="shades" aria-label="Shade card"><div class="wrap">
- <span class="lbl"><span class="uz">Ranglar kartasi</span><span class="en">Shade card</span></span>
- <div class="chip"><i style="background:#b8224f"></i><b><span class="uz">Anor</span><span class="en">Pomegranate</span></b><small>A-104</small></div>
- <div class="chip"><i style="background:#a01236"></i><b><span class="uz">Qizg'ish</span><span class="en">Crimson</span></b><small>A-109</small></div>
- <div class="chip"><i style="background:#d12a2a"></i><b><span class="uz">Qizil</span><span class="en">Red</span></b><small>A-112</small></div>
- <div class="chip"><i style="background:#ef7fb0"></i><b><span class="uz">Pushti</span><span class="en">Pink</span></b><small>A-131</small></div>
- <div class="chip"><i style="background:#6f3ea0"></i><b><span class="uz">Binafsha</span><span class="en">Violet</span></b><small>A-208</small></div>
- <div class="chip"><i style="background:#2b3f8c"></i><b><span class="uz">Nil</span><span class="en">Indigo</span></b><small>A-214</small></div>
- <div class="chip"><i style="background:#2f6fd6"></i><b><span class="uz">Ko'k</span><span class="en">Blue</span></b><small>A-220</small></div>
- <div class="chip"><i style="background:#8fc3e8"></i><b><span class="uz">Havorang</span><span class="en">Sky</span></b><small>A-227</small></div>
- <div class="chip"><i style="background:#2aa9a4"></i><b><span class="uz">Firuza</span><span class="en">Turquoise</span></b><small>A-305</small></div>
- <div class="chip"><i style="background:#3a9a4e"></i><b><span class="uz">Sabza</span><span class="en">Green</span></b><small>A-318</small></div>
- <div class="chip"><i style="background:#7d8a3a"></i><b><span class="uz">Zaytun</span><span class="en">Olive</span></b><small>A-322</small></div>
- <div class="chip"><i style="background:#f2d23a"></i><b><span class="uz">Sariq</span><span class="en">Yellow</span></b><small>A-402</small></div>
- <div class="chip"><i style="background:#d9a521"></i><b><span class="uz">Zar</span><span class="en">Gold</span></b><small>A-407</small></div>
- <div class="chip"><i style="background:#c9a97a"></i><b><span class="uz">Malla</span><span class="en">Tan</span></b><small>A-511</small></div>
- <div class="chip"><i style="background:#6b4426"></i><b><span class="uz">Jigarrang</span><span class="en">Brown</span></b><small>A-518</small></div>
- <div class="chip"><i style="background:#f4f2ec"></i><b><span class="uz">Oq</span><span class="en">White</span></b><small>A-001</small></div>
- <div class="chip"><i style="background:#8b8d91"></i><b><span class="uz">Kulrang</span><span class="en">Grey</span></b><small>A-603</small></div>
- <div class="chip"><i style="background:#1c1c1e"></i><b><span class="uz">Qora</span><span class="en">Black</span></b><small>A-009</small></div>
-</div></div>
+<section class="pantone" id="colors"><div class="wrap">
+ <div class="head"><div><span class="kicker"><span class="uz">Ranglar</span><span class="en">Colours</span></span><h2><span class="uz">PANTONE® ranglar kartasi</span><span class="en">PANTONE® colour card</span></h2>
+  <p><span class="uz">Ranglarni tanlang, ular buyurtma arizasiga qo'shiladi. Ekrandagi ranglar taxminiy; jismoniy PANTONE® TCX namunasi asos hisoblanadi.</span><span class="en">Pick colours and they are added to your order request. On-screen colours are approximate; the physical PANTONE® TCX swatch is the reference.</span></p></div>
+  <a class="more" href="#order"><span class="uz">Buyurtmaga o'tish →</span><span class="en">Go to the order form →</span></a></div>
+ <div class="ptools"><div class="fams" role="group" aria-label="Colour family">
+   <button type="button" data-fam="all" aria-pressed="true"><span class="uz">Barchasi</span><span class="en">All</span></button>
+   <button type="button" data-fam="red" aria-pressed="false"><span class="uz">Qizil</span><span class="en">Reds</span></button>
+   <button type="button" data-fam="pink" aria-pressed="false"><span class="uz">Pushti</span><span class="en">Pinks</span></button>
+   <button type="button" data-fam="purple" aria-pressed="false"><span class="uz">Binafsha</span><span class="en">Purples</span></button>
+   <button type="button" data-fam="blue" aria-pressed="false"><span class="uz">Ko'k</span><span class="en">Blues</span></button>
+   <button type="button" data-fam="green" aria-pressed="false"><span class="uz">Yashil</span><span class="en">Greens</span></button>
+   <button type="button" data-fam="yellow" aria-pressed="false"><span class="uz">Sariq va to'q sariq</span><span class="en">Yellows and oranges</span></button>
+   <button type="button" data-fam="neutral" aria-pressed="false"><span class="uz">Neytral</span><span class="en">Neutrals</span></button>
+  </div><label class="psearch"><span aria-hidden="true">⌕</span><input id="psearch" type="search" placeholder="Kod yoki nom, masalan 19-4052" data-ph-uz="Kod yoki nom, masalan 19-4052" data-ph-en="Code or name, e.g. 19-4052" autocomplete="off"></label></div>
+ <div class="pgrid" id="pgrid">
+  <button type="button" class="pchip" data-code="19-1664" data-name="True Red" data-fam="red" data-hex="#BF1932" style="--c:#BF1932" aria-pressed="false"><i></i><b>19-1664 TCX</b><small>True Red</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="18-1662" data-name="Flame Scarlet" data-fam="red" data-hex="#CD212A" style="--c:#CD212A" aria-pressed="false"><i></i><b>18-1662 TCX</b><small>Flame Scarlet</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="19-1557" data-name="Chili Pepper" data-fam="red" data-hex="#9B1B30" style="--c:#9B1B30" aria-pressed="false"><i></i><b>19-1557 TCX</b><small>Chili Pepper</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="19-1862" data-name="Jester Red" data-fam="red" data-hex="#9E1030" style="--c:#9E1030" aria-pressed="false"><i></i><b>19-1862 TCX</b><small>Jester Red</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="18-1750" data-name="Viva Magenta" data-fam="red" data-hex="#BB2649" style="--c:#BB2649" aria-pressed="false"><i></i><b>18-1750 TCX</b><small>Viva Magenta</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="18-1438" data-name="Marsala" data-fam="red" data-hex="#955251" style="--c:#955251" aria-pressed="false"><i></i><b>18-1438 TCX</b><small>Marsala</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="18-2120" data-name="Honeysuckle" data-fam="pink" data-hex="#D94F70" style="--c:#D94F70" aria-pressed="false"><i></i><b>18-2120 TCX</b><small>Honeysuckle</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="17-2031" data-name="Fuchsia Rose" data-fam="pink" data-hex="#C74375" style="--c:#C74375" aria-pressed="false"><i></i><b>17-2031 TCX</b><small>Fuchsia Rose</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="17-1937" data-name="Hot Pink" data-fam="pink" data-hex="#E55982" style="--c:#E55982" aria-pressed="false"><i></i><b>17-1937 TCX</b><small>Hot Pink</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="16-1546" data-name="Living Coral" data-fam="pink" data-hex="#FF6F61" style="--c:#FF6F61" aria-pressed="false"><i></i><b>16-1546 TCX</b><small>Living Coral</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="14-3207" data-name="Pink Lavender" data-fam="pink" data-hex="#D9AFCA" style="--c:#D9AFCA" aria-pressed="false"><i></i><b>14-3207 TCX</b><small>Pink Lavender</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="13-1520" data-name="Rose Quartz" data-fam="pink" data-hex="#F7CAC9" style="--c:#F7CAC9" aria-pressed="false"><i></i><b>13-1520 TCX</b><small>Rose Quartz</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="18-3838" data-name="Ultra Violet" data-fam="purple" data-hex="#5F4B8B" style="--c:#5F4B8B" aria-pressed="false"><i></i><b>18-3838 TCX</b><small>Ultra Violet</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="18-3224" data-name="Radiant Orchid" data-fam="purple" data-hex="#B163A3" style="--c:#B163A3" aria-pressed="false"><i></i><b>18-3224 TCX</b><small>Radiant Orchid</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="17-3938" data-name="Very Peri" data-fam="purple" data-hex="#6667AB" style="--c:#6667AB" aria-pressed="false"><i></i><b>17-3938 TCX</b><small>Very Peri</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="19-3642" data-name="Royal Purple" data-fam="purple" data-hex="#603F83" style="--c:#603F83" aria-pressed="false"><i></i><b>19-3642 TCX</b><small>Royal Purple</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="19-3628" data-name="Acai" data-fam="purple" data-hex="#46295A" style="--c:#46295A" aria-pressed="false"><i></i><b>19-3628 TCX</b><small>Acai</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="16-3320" data-name="Violet Tulip" data-fam="purple" data-hex="#9E91C3" style="--c:#9E91C3" aria-pressed="false"><i></i><b>16-3320 TCX</b><small>Violet Tulip</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="19-4052" data-name="Classic Blue" data-fam="blue" data-hex="#0F4C81" style="--c:#0F4C81" aria-pressed="false"><i></i><b>19-4052 TCX</b><small>Classic Blue</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="19-4045" data-name="Lapis Blue" data-fam="blue" data-hex="#004B8D" style="--c:#004B8D" aria-pressed="false"><i></i><b>19-4045 TCX</b><small>Lapis Blue</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="19-4027" data-name="Estate Blue" data-fam="blue" data-hex="#233658" style="--c:#233658" aria-pressed="false"><i></i><b>19-4027 TCX</b><small>Estate Blue</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="18-3943" data-name="Blue Iris" data-fam="blue" data-hex="#5A5B9F" style="--c:#5A5B9F" aria-pressed="false"><i></i><b>18-3943 TCX</b><small>Blue Iris</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="16-4132" data-name="Little Boy Blue" data-fam="blue" data-hex="#6EA4CC" style="--c:#6EA4CC" aria-pressed="false"><i></i><b>16-4132 TCX</b><small>Little Boy Blue</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="15-4020" data-name="Cerulean" data-fam="blue" data-hex="#9BB7D4" style="--c:#9BB7D4" aria-pressed="false"><i></i><b>15-4020 TCX</b><small>Cerulean</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="14-4811" data-name="Aqua Sky" data-fam="blue" data-hex="#7BC4C4" style="--c:#7BC4C4" aria-pressed="false"><i></i><b>14-4811 TCX</b><small>Aqua Sky</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="15-5217" data-name="Blue Turquoise" data-fam="blue" data-hex="#53B0AE" style="--c:#53B0AE" aria-pressed="false"><i></i><b>15-5217 TCX</b><small>Blue Turquoise</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="15-5519" data-name="Turquoise" data-fam="blue" data-hex="#45B5AA" style="--c:#45B5AA" aria-pressed="false"><i></i><b>15-5519 TCX</b><small>Turquoise</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="17-5641" data-name="Emerald" data-fam="green" data-hex="#009473" style="--c:#009473" aria-pressed="false"><i></i><b>17-5641 TCX</b><small>Emerald</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="18-5338" data-name="Ultramarine Green" data-fam="green" data-hex="#006B54" style="--c:#006B54" aria-pressed="false"><i></i><b>18-5338 TCX</b><small>Ultramarine Green</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="17-6153" data-name="Fern Green" data-fam="green" data-hex="#4F7942" style="--c:#4F7942" aria-pressed="false"><i></i><b>17-6153 TCX</b><small>Fern Green</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="18-0117" data-name="Vineyard Green" data-fam="green" data-hex="#5F7355" style="--c:#5F7355" aria-pressed="false"><i></i><b>18-0117 TCX</b><small>Vineyard Green</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="18-0538" data-name="Woodbine" data-fam="green" data-hex="#7B7F32" style="--c:#7B7F32" aria-pressed="false"><i></i><b>18-0538 TCX</b><small>Woodbine</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="15-0343" data-name="Greenery" data-fam="green" data-hex="#88B04B" style="--c:#88B04B" aria-pressed="false"><i></i><b>15-0343 TCX</b><small>Greenery</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="13-0117" data-name="Green Ash" data-fam="green" data-hex="#A0DAA9" style="--c:#A0DAA9" aria-pressed="false"><i></i><b>13-0117 TCX</b><small>Green Ash</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="13-0647" data-name="Illuminating" data-fam="yellow" data-hex="#F5DF4D" style="--c:#F5DF4D" aria-pressed="false"><i></i><b>13-0647 TCX</b><small>Illuminating</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="12-0752" data-name="Buttercup" data-fam="yellow" data-hex="#FAE03C" style="--c:#FAE03C" aria-pressed="false"><i></i><b>12-0752 TCX</b><small>Buttercup</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="14-0848" data-name="Mimosa" data-fam="yellow" data-hex="#EFC050" style="--c:#EFC050" aria-pressed="false"><i></i><b>14-0848 TCX</b><small>Mimosa</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="15-1264" data-name="Turmeric" data-fam="yellow" data-hex="#FE840E" style="--c:#FE840E" aria-pressed="false"><i></i><b>15-1264 TCX</b><small>Turmeric</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="16-1364" data-name="Vibrant Orange" data-fam="yellow" data-hex="#FF7420" style="--c:#FF7420" aria-pressed="false"><i></i><b>16-1364 TCX</b><small>Vibrant Orange</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="17-1463" data-name="Tangerine Tango" data-fam="yellow" data-hex="#DD4124" style="--c:#DD4124" aria-pressed="false"><i></i><b>17-1463 TCX</b><small>Tangerine Tango</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="13-1023" data-name="Peach Fuzz" data-fam="yellow" data-hex="#FFBE98" style="--c:#FFBE98" aria-pressed="false"><i></i><b>13-1023 TCX</b><small>Peach Fuzz</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="11-0601" data-name="Bright White" data-fam="neutral" data-hex="#F4F5F0" style="--c:#F4F5F0" aria-pressed="false"><i></i><b>11-0601 TCX</b><small>Bright White</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="14-4102" data-name="Glacier Gray" data-fam="neutral" data-hex="#C5C6C8" style="--c:#C5C6C8" aria-pressed="false"><i></i><b>14-4102 TCX</b><small>Glacier Gray</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="17-5104" data-name="Ultimate Gray" data-fam="neutral" data-hex="#939597" style="--c:#939597" aria-pressed="false"><i></i><b>17-5104 TCX</b><small>Ultimate Gray</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="19-3906" data-name="Dark Shadow" data-fam="neutral" data-hex="#4A4B4D" style="--c:#4A4B4D" aria-pressed="false"><i></i><b>19-3906 TCX</b><small>Dark Shadow</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="19-0000" data-name="Raven" data-fam="neutral" data-hex="#413E3D" style="--c:#413E3D" aria-pressed="false"><i></i><b>19-0000 TCX</b><small>Raven</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="19-4007" data-name="Anthracite" data-fam="neutral" data-hex="#28282D" style="--c:#28282D" aria-pressed="false"><i></i><b>19-4007 TCX</b><small>Anthracite</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="13-1106" data-name="Sand Dollar" data-fam="neutral" data-hex="#DECDBE" style="--c:#DECDBE" aria-pressed="false"><i></i><b>13-1106 TCX</b><small>Sand Dollar</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="16-1318" data-name="Warm Taupe" data-fam="neutral" data-hex="#AF9483" style="--c:#AF9483" aria-pressed="false"><i></i><b>16-1318 TCX</b><small>Warm Taupe</small><span class="ck" aria-hidden="true">✓</span></button>
+  <button type="button" class="pchip" data-code="17-1230" data-name="Mocha Mousse" data-fam="neutral" data-hex="#A47864" style="--c:#A47864" aria-pressed="false"><i></i><b>17-1230 TCX</b><small>Mocha Mousse</small><span class="ck" aria-hidden="true">✓</span></button>
+ </div>
+ <p class="pempty" id="pempty" hidden><span class="uz">Hech narsa topilmadi.</span><span class="en">Nothing found.</span></p>
+ <p class="pnote"><span class="uz">PANTONE® va Pantone TCX — Pantone LLC savdo belgilari. Kartada bo'lmagan kodlarni ham buyurtma qilish mumkin.</span><span class="en">PANTONE® and Pantone TCX are trademarks of Pantone LLC. Codes not on the card can also be ordered.</span></p>
+</div></section>
 
 <section class="sec" id="products"><div class="wrap">
  <div class="sec-head"><span class="kicker"><span class="uz">Mahsulotlar</span><span class="en">Products</span></span><h2><span class="uz">Ip</span><span class="en">Yarn</span></h2>
@@ -254,6 +394,58 @@ footer li a:hover{color:var(--accent-t)}
   <article class="dye"><div class="fig"><canvas data-scene="bobbins"></canvas></div><h3><span class="uz">Bobina</span><span class="en">Cone</span></h3><span class="kicker"><span class="uz">Yumshoq o'ram · 0,9–1,5 kg</span><span class="en">Soft-wound · 0.9–1.5 kg</span></span><p><span class="uz">Yumshoq o'ramli bobinalarda bir xil rang va yuqori ranglilik chidamliligi.</span><span class="en">Even shade and high colour fastness on soft-wound packages.</span></p></article>
   <article class="dye"><div class="fig"><canvas data-scene="hanks"></canvas></div><h3><span class="uz">Kalava</span><span class="en">Hank</span></h3><span class="kicker"><span class="uz">An'anaviy usul · qo'lda to'qish</span><span class="en">Traditional · hand-knitting</span></span><p><span class="uz">Qo'lda to'qish va hajmli iplar uchun an'anaviy kalava bo'yash.</span><span class="en">Traditional hank dyeing for hand-knitting and bulky yarns.</span></p></article>
   <article class="dye"><div class="fig"><canvas data-scene="tow"></canvas></div><h3>Tow</h3><span class="kicker"><span class="uz">Tola bosqichi · melanj</span><span class="en">Fibre stage · melange</span></span><p><span class="uz">Tola bosqichida bo'yash orqali melanj va to'q ranglarda barqaror natija.</span><span class="en">Fibre-stage dyeing for stable results in melange and deep shades.</span></p></article>
+ </div>
+</div></section>
+
+<section class="sec" id="order"><div class="wrap">
+ <div class="sec-head"><span class="kicker"><span class="uz">Buyurtma</span><span class="en">Order</span></span><h2><span class="uz">Ariza yuboring</span><span class="en">Send an order request</span></h2>
+  <p><span class="uz">Ip turi, nomeri, tarkibi, shakli va ranglarini tanlang. Menejerimiz 1 ish kuni ichida narx va namunalar bilan javob beradi. Buyurtma majburiyat emas.</span><span class="en">Choose the yarn type, count, composition, form and colours. Our manager replies within one business day with a price and samples. Sending a request is not a commitment.</span></p></div>
+ <div class="order" id="orderWrap">
+  <form class="form" id="orderForm" novalidate>
+   <fieldset><legend><span class="uz">1 · Mahsulot</span><span class="en">1 · Product</span></legend>
+    <div class="opts">
+     <label class="opt"><input type="radio" name="product" value="kamvol" id="p-kamvol" checked><span class="box"><span class="uz">Kamvol ip</span><span class="en">Worsted yarn</span><small><span class="uz">Nm 4–60 · trikotaj, to'quv</span><span class="en">Nm 4–60 · knitting, weaving</span></small></span></label>
+     <label class="opt"><input type="radio" name="product" value="fantaziya" id="p-fantaziya"><span class="box"><span class="uz">Fantaziya ip</span><span class="en">Fancy yarn</span><small><span class="uz">Nm 2–16 · qo'lda to'qish, hajmli trikotaj</span><span class="en">Nm 2–16 · hand-knitting, bulky knits</span></small></span></label>
+    </div></fieldset>
+   <fieldset><legend><span class="uz">2 · Spetsifikatsiya</span><span class="en">2 · Specification</span></legend>
+    <div class="f2">
+     <div class="fld"><label for="f-count"><span class="uz">Ip nomeri</span><span class="en">Yarn count</span> <small>Nm</small></label><select id="f-count"></select></div>
+     <div class="fld"><label for="f-ply"><span class="uz">Qatlam</span><span class="en">Ply</span></label><select id="f-ply"><option value="1" data-uz="1 qat" data-en="Single">1 qat</option><option value="2" data-uz="2 qat" data-en="2-ply">2 qat</option><option value="3" data-uz="3 qat" data-en="3-ply">3 qat</option></select></div>
+     <div class="fld"><label for="f-comp"><span class="uz">Tarkib</span><span class="en">Composition</span></label><select id="f-comp"><option value="100pan" data-uz="100% akril" data-en="100% acrylic">100% akril</option><option value="pan-wo" data-uz="Akril / jun" data-en="Acrylic / wool">Akril / jun</option><option value="pan-pa" data-uz="Akril / poliamid" data-en="Acrylic / polyamide">Akril / poliamid</option><option value="pan-ny" data-uz="Akril / neylon" data-en="Acrylic / nylon">Akril / neylon</option><option value="other" data-uz="Boshqa (izohda yozing)" data-en="Other (describe in comment)">Boshqa (izohda yozing)</option></select></div>
+     <div class="fld"><label for="f-elast"><span class="uz">Elastan</span><span class="en">Elastane</span></label><select id="f-elast"><option value="none" data-uz="Elastansiz" data-en="None">Elastansiz</option><option value="pbt" data-uz="PBT" data-en="PBT">PBT</option><option value="lycra" data-uz="Laykra" data-en="Lycra">Laykra</option></select></div>
+     <div class="fld" id="fld-finish" hidden><label for="f-finish"><span class="uz">Ishlov</span><span class="en">Finish</span></label><select id="f-finish"><option value="plain" data-uz="Tuksiz" data-en="Plain">Tuksiz</option><option value="brushed" data-uz="Tukli (shardon)" data-en="Brushed">Tukli (shardon)</option></select></div>
+     <div class="fld"><label for="f-form"><span class="uz">Shakl</span><span class="en">Form</span></label><select id="f-form"><option value="cone" data-uz="Bobina" data-en="Cone">Bobina</option><option value="hank" data-uz="Kalava" data-en="Hank">Kalava</option><option value="tow" data-uz="Jgut (tow)" data-en="Tow">Jgut (tow)</option></select></div>
+    </div></fieldset>
+   <fieldset id="fs-colors"><legend><span class="uz">3 · Ranglar</span><span class="en">3 · Colours</span></legend>
+    <div class="sel" id="selList"></div>
+    <p class="fmsg"><span class="uz">Kamida bitta rang tanlang.</span><span class="en">Select at least one colour.</span></p>
+    <div class="addc"><input id="f-custom" type="text" placeholder="Boshqa PANTONE TCX kodi, masalan 18-1750" data-ph-uz="Boshqa PANTONE TCX kodi, masalan 18-1750" data-ph-en="Another PANTONE TCX code, e.g. 18-1750" autocomplete="off"><button class="btn line" type="button" id="addCustom"><span class="uz">Qo'shish</span><span class="en">Add</span></button></div>
+    <p class="hint"><span class="uz">Har bir rang uchun kg ni ixtiyoriy kiriting. </span><span class="en">Kilograms per colour are optional. </span><a href="#colors"><span class="uz">Ranglar kartasiga qaytish ↑</span><span class="en">Back to the colour card ↑</span></a></p>
+   </fieldset>
+   <fieldset><legend><span class="uz">4 · Miqdor va muddat</span><span class="en">4 · Quantity and timing</span></legend>
+    <div class="f2">
+     <div class="fld"><label for="f-qty"><span class="uz">Umumiy miqdor</span><span class="en">Total quantity</span> <small>kg</small></label><input id="f-qty" type="number" min="1" step="1" inputmode="numeric" placeholder="500"><p class="fmsg"><span class="uz">Miqdorni kg da kiriting.</span><span class="en">Enter the quantity in kg.</span></p></div>
+     <div class="fld"><label for="f-date"><span class="uz">Kerakli muddat</span><span class="en">Needed by</span> <small><span class="uz">(ixtiyoriy)</span><span class="en">(optional)</span></small></label><input id="f-date" type="date"></div>
+    </div></fieldset>
+   <fieldset><legend><span class="uz">5 · Aloqa ma'lumotlari</span><span class="en">5 · Contact details</span></legend>
+    <div class="f2">
+     <div class="fld"><label for="f-company"><span class="uz">Kompaniya</span><span class="en">Company</span></label><input id="f-company" type="text" autocomplete="organization"></div>
+     <div class="fld"><label for="f-name"><span class="uz">Ism-familiya</span><span class="en">Full name</span></label><input id="f-name" type="text" autocomplete="name"><p class="fmsg"><span class="uz">Ismingizni kiriting.</span><span class="en">Enter your name.</span></p></div>
+     <div class="fld"><label for="f-phone"><span class="uz">Telefon</span><span class="en">Phone</span></label><input id="f-phone" type="tel" autocomplete="tel" placeholder="+998 90 000 00 00"><p class="fmsg"><span class="uz">Telefon raqamini kiriting.</span><span class="en">Enter a phone number.</span></p></div>
+     <div class="fld"><label for="f-email">Email</label><input id="f-email" type="email" autocomplete="email"><p class="fmsg"><span class="uz">To'g'ri email kiriting.</span><span class="en">Enter a valid email.</span></p></div>
+     <div class="fld full"><label for="f-city"><span class="uz">Shahar / mamlakat</span><span class="en">City / country</span></label><input id="f-city" type="text" autocomplete="address-level2"></div>
+     <div class="fld full"><label for="f-comment"><span class="uz">Izoh</span><span class="en">Comment</span> <small><span class="uz">(ixtiyoriy)</span><span class="en">(optional)</span></small></label><textarea id="f-comment" placeholder="Rang bo'yicha taqsimot, o'ram og'irligi, yetkazib berish shartlari..." data-ph-uz="Rang bo'yicha taqsimot, o'ram og'irligi, yetkazib berish shartlari..." data-ph-en="Split by colour, package weight, delivery terms..."></textarea></div>
+    </div>
+    <label class="check"><input type="checkbox" id="f-consent"><span><span class="uz">Ma'lumotlarim ushbu so'rovni ko'rib chiqish uchun ishlatilishiga roziman.</span><span class="en">I agree that my details are used to process this request.</span></span></label>
+   </fieldset>
+   <div><button class="btn" type="submit"><span class="uz">Ariza yuborish</span><span class="en">Send request</span></button></div>
+  </form>
+  <div class="done" id="done" role="status"><span class="kicker"><span class="uz">Ariza</span><span class="en">Request</span></span><h3><span class="uz">Arizangiz qabul qilindi</span><span class="en">Your request has been received</span></h3><div class="ref" id="ref">ASL-000000-0000</div>
+   <p><span class="uz">Bu raqamni saqlab qo'ying. Menejerimiz 1 ish kuni ichida narx va namunalar bilan bog'lanadi.</span><span class="en">Keep this reference. Our manager will get back within one business day with a price and samples.</span></p>
+   <pre id="sumText"></pre>
+   <div class="acts"><a class="btn" id="mailto" href="#order"><span class="uz">Email orqali ham yuborish</span><span class="en">Also send by email</span></a><button class="btn line" type="button" id="copyBtn"><span class="uz">Nusxa olish</span><span class="en">Copy</span></button><button class="btn line" type="button" id="againBtn"><span class="uz">Yangi ariza</span><span class="en">New request</span></button></div></div>
+  <aside class="osum" aria-live="polite"><h3><span class="uz">Sizning so'rovingiz</span><span class="en">Your request</span></h3><dl id="sum"></dl>
+   <ol><li><span class="uz">Arizani yuborasiz</span><span class="en">You send the request</span></li><li><span class="uz">1 ish kuni ichida narx va namunalar</span><span class="en">Price and samples within one business day</span></li><li><span class="uz">Tasdiqlash, ishlab chiqarish va yetkazib berish</span><span class="en">Confirmation, production and delivery</span></li></ol></aside>
  </div>
 </div></section>
 
@@ -308,6 +500,7 @@ footer li a:hover{color:var(--accent-t)}
   <div class="soc"><a href="#top">Facebook</a><a href="#top">Instagram</a><a href="#top">LinkedIn</a><a href="#top">YouTube</a></div>
  </div>
 </div></footer>
+<div class="tray" id="tray"><div class="sw"></div><span class="n"></span><a class="btn" href="#order"><span class="uz">Buyurtmaga →</span><span class="en">To order →</span></a></div>
 <script>
 /* YarnScenes — procedural spinning-mill imagery drawn on <canvas data-scene="..."> */
 window.YarnScenes=(function(){
@@ -473,13 +666,80 @@ return{draw:draw,all:all};
  var root=document.documentElement;
  function setLang(l){root.setAttribute('data-lang',l);root.lang=l;try{localStorage.setItem('aslip-lang',l)}catch(e){}
   document.querySelectorAll('[data-setlang]').forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-setlang')===l))});
-  document.querySelectorAll('[data-ph-uz]').forEach(function(i){i.placeholder=l==='uz'?i.getAttribute('data-ph-uz'):i.getAttribute('data-ph-en')});}
+  document.querySelectorAll('[data-ph-uz]').forEach(function(i){i.placeholder=l==='uz'?i.getAttribute('data-ph-uz'):i.getAttribute('data-ph-en')});if(window.__orderRerender)window.__orderRerender();}
  document.querySelectorAll('[data-setlang]').forEach(function(b){b.addEventListener('click',function(){setLang(b.getAttribute('data-setlang'))})});
  setLang(root.getAttribute('data-lang')||'uz');
  var burger=document.querySelector('.burger'),nav=document.getElementById('nav');
  if(burger){burger.addEventListener('click',function(){var o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',String(o))});
   nav.addEventListener('click',function(e){if(e.target.closest('a')){nav.classList.remove('open');burger.setAttribute('aria-expanded','false')}});}
  document.querySelectorAll('form.nl').forEach(function(f){f.addEventListener('submit',function(e){e.preventDefault();var inp=f.querySelector('input');if(inp&&inp.value.indexOf('@')>0){f.classList.add('done')}else if(inp){inp.focus()}})});
+})();
+</script>
+<script>
+(function(){
+ var root=document.documentElement,MAX=8,sel=[],sent=false,lastPayload=null;
+ function lang(){return root.getAttribute('data-lang')||'uz'}
+ function T(uz,en){return lang()==='uz'?uz:en}
+ function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+ /* colour card */
+ var chips=[].slice.call(document.querySelectorAll('.pchip')),byCode={};
+ chips.forEach(function(c){byCode[c.getAttribute('data-code')]={name:c.getAttribute('data-name'),hex:c.getAttribute('data-hex')}});
+ function find(code){for(var i=0;i<sel.length;i++)if(sel[i].code===code)return i;return -1}
+ function add(code){if(find(code)>=0||sel.length>=MAX)return false;var k=byCode[code];sel.push({code:code,name:k?k.name:T('Kartadan tashqari kod','Code outside the card'),hex:k?k.hex:'',kg:''});return true}
+ function toggle(code){var i=find(code);if(i>=0)sel.splice(i,1);else add(code);render()}
+ function remove(code){var i=find(code);if(i>=0)sel.splice(i,1);render()}
+ function render(){chips.forEach(function(c){c.setAttribute('aria-pressed',String(find(c.getAttribute('data-code'))>=0))});renderSel();renderTray();summary()}
+ chips.forEach(function(c){c.addEventListener('click',function(){toggle(c.getAttribute('data-code'))})});
+ var fams=[].slice.call(document.querySelectorAll('.fams button')),fam='all',q='';
+ function filter(){var n=0;chips.forEach(function(c){var ok=(fam==='all'||c.getAttribute('data-fam')===fam)&&(!q||(c.getAttribute('data-code')+' '+c.getAttribute('data-name')).toLowerCase().indexOf(q)>=0);c.hidden=!ok;if(ok)n++});document.getElementById('pempty').hidden=n>0}
+ fams.forEach(function(b){b.addEventListener('click',function(){fam=b.getAttribute('data-fam');fams.forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});filter()})});
+ document.getElementById('psearch').addEventListener('input',function(e){q=e.target.value.trim().toLowerCase();filter()});
+ /* selected colours */
+ var list=document.getElementById('selList');
+ function swatch(hex){return hex||'repeating-linear-gradient(45deg,#cfcfcf 0 4px,#ececec 4px 8px)'}
+ function renderSel(){if(!sel.length){list.innerHTML='<div class="none">'+esc(T("Hali rang tanlanmagan. Yuqoridagi ranglar kartasidan tanlang yoki kodni kiriting.","No colours selected yet. Pick from the colour card above or enter a code."))+'</div>';return}
+  list.innerHTML='';sel.forEach(function(s){var row=document.createElement('div');row.className='crow';
+   row.innerHTML='<i style="background:'+swatch(s.hex)+'"></i><div class="name"><b>'+esc(s.code)+' TCX</b><small>'+esc(s.name)+'</small></div><input type="number" min="0" step="1" inputmode="numeric" placeholder="kg" aria-label="kg" value="'+esc(s.kg)+'"><button type="button" aria-label="'+esc(T('Olib tashlash','Remove'))+'">×</button>';
+   row.querySelector('input').addEventListener('input',function(e){s.kg=e.target.value;summary()});
+   row.querySelector('button').addEventListener('click',function(){remove(s.code)});
+   list.appendChild(row)})}
+ var custom=document.getElementById('f-custom');
+ function addCustom(){var v=custom.value.trim().toUpperCase().replace(/\s*TCX$/,'');if(!/^\d{2}-\d{4}$/.test(v)){custom.classList.add('bad');custom.focus();return}custom.classList.remove('bad');add(v);custom.value='';render()}
+ document.getElementById('addCustom').addEventListener('click',addCustom);
+ custom.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();addCustom()}});
+ custom.addEventListener('input',function(){custom.classList.remove('bad')});
+ /* tray */
+ var tray=document.getElementById('tray');
+ function renderTray(){tray.classList.toggle('on',sel.length>0&&!sent);tray.querySelector('.sw').innerHTML=sel.map(function(s){return '<i style="background:'+swatch(s.hex)+'"></i>'}).join('');tray.querySelector('.n').textContent=lang()==='uz'?sel.length+' ta rang tanlandi':sel.length+(sel.length===1?' colour selected':' colours selected')}
+ /* form */
+ var form=document.getElementById('orderForm'),COUNTS={kamvol:[4,6,8,10,12,14,16,20,24,28,32,36,40,48,60],fantaziya:[2,3,4,5,6,8,10,12,16]};
+ function product(){return form.product.value}
+ function fillCounts(){var s=document.getElementById('f-count'),cur=s.value;s.innerHTML=COUNTS[product()].map(function(n){return '<option value="'+n+'">Nm '+n+'</option>'}).join('');if(cur&&COUNTS[product()].indexOf(+cur)>=0)s.value=cur;document.getElementById('fld-finish').hidden=product()!=='fantaziya'}
+ [].forEach.call(form.product,function(r){r.addEventListener('change',function(){fillCounts();summary()})});
+ fillCounts();
+ function optText(id){var s=document.getElementById(id),o=s.options[s.selectedIndex];return o?(o.getAttribute('data-'+lang())||o.textContent):''}
+ function countText(){var ply=document.getElementById('f-ply').value,c=document.getElementById('f-count').value;return 'Nm '+(ply>1?ply+'/':'')+c}
+ function productText(){return product()==='kamvol'?T('Kamvol ip','Worsted yarn'):T('Fantaziya ip','Fancy yarn')}
+ function summary(){var q=document.getElementById('f-qty').value;document.getElementById('sum').innerHTML=[[T('Mahsulot','Product'),productText()],[T('Nomer','Count'),countText()],[T('Tarkib','Composition'),optText('f-comp')],[T('Shakl','Form'),optText('f-form')],[T('Ranglar','Colours'),sel.length?sel.map(function(s){return s.code}).join(', '):'—'],[T('Miqdor','Quantity'),q?q+' kg':'—']].map(function(p){return '<dt>'+esc(p[0])+'</dt><dd>'+esc(p[1])+'</dd>'}).join('')}
+ form.addEventListener('input',summary);form.addEventListener('change',summary);
+ function mark(el,bad){var f=el.closest('.fld');if(f)f.classList.toggle('err',!!bad)}
+ form.addEventListener('submit',function(e){e.preventDefault();var ok=true,first=null;
+  function req(id,test){var el=document.getElementById(id),v=el.value.trim(),bad=test?!test(v):!v;mark(el,bad);if(bad){ok=false;first=first||el}}
+  req('f-qty',function(v){return +v>0});req('f-name');req('f-phone',function(v){return v.replace(/\D/g,'').length>=7});req('f-email',function(v){return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)});
+  var fs=document.getElementById('fs-colors');fs.classList.toggle('err',!sel.length);if(!sel.length){ok=false;first=first||custom}
+  var consent=document.getElementById('f-consent');consent.closest('.check').classList.toggle('err',!consent.checked);if(!consent.checked){ok=false;first=first||consent}
+  if(!ok){first.focus();return}
+  finish(collect())});
+ function collect(){var g=function(id){return document.getElementById(id).value.trim()};return{ref:makeRef(),sentAt:new Date().toISOString(),lang:lang(),product:product(),count:countText(),composition:g('f-comp'),elastane:g('f-elast'),finish:product()==='fantaziya'?g('f-finish'):'',form:g('f-form'),colours:sel.map(function(s){return{code:s.code,name:s.name,kg:s.kg?+s.kg:null}}),quantityKg:+g('f-qty'),neededBy:g('f-date'),company:g('f-company'),name:g('f-name'),phone:g('f-phone'),email:g('f-email'),city:g('f-city'),comment:g('f-comment')}}
+ function makeRef(){var d=new Date(),p=function(n){return(n<10?'0':'')+n};return 'ASL-'+String(d.getFullYear()).slice(2)+p(d.getMonth()+1)+p(d.getDate())+'-'+Math.random().toString(36).slice(2,6).toUpperCase()}
+ function text(p){var L=lang()==='uz',o=[];o.push((L?'Ariza':'Order request')+' '+p.ref);o.push((L?'Mahsulot':'Product')+': '+productText());o.push((L?'Nomer':'Count')+': '+p.count);o.push((L?'Tarkib':'Composition')+': '+optText('f-comp'));o.push((L?'Elastan':'Elastane')+': '+optText('f-elast'));if(p.finish)o.push((L?'Ishlov':'Finish')+': '+optText('f-finish'));o.push((L?'Shakl':'Form')+': '+optText('f-form'));o.push((L?'Ranglar':'Colours')+':');p.colours.forEach(function(c){o.push('  - '+c.code+' TCX '+c.name+(c.kg?' · '+c.kg+' kg':''))});o.push((L?'Umumiy miqdor':'Total quantity')+': '+p.quantityKg+' kg');if(p.neededBy)o.push((L?'Kerakli muddat':'Needed by')+': '+p.neededBy);o.push('');if(p.company)o.push((L?'Kompaniya':'Company')+': '+p.company);o.push((L?'Ism':'Name')+': '+p.name);o.push((L?'Telefon':'Phone')+': '+p.phone);o.push('Email: '+p.email);if(p.city)o.push((L?'Shahar / mamlakat':'City / country')+': '+p.city);if(p.comment){o.push('');o.push((L?'Izoh':'Comment')+': '+p.comment)}return o.join('\n')}
+ /* Delivery stub: replace the body of sendApplication with a fetch() to the real endpoint (email service, Google Sheet, Telegram bot or CRM). */
+ function sendApplication(p){try{var arr=JSON.parse(localStorage.getItem('aslip-applications')||'[]');arr.push(p);localStorage.setItem('aslip-applications',JSON.stringify(arr.slice(-20)))}catch(e){}return Promise.resolve({ok:true})}
+ function finish(p){lastPayload=p;window.ASLIP_LAST_APPLICATION=p;sendApplication(p);sent=true;document.getElementById('orderWrap').classList.add('sent');document.getElementById('ref').textContent=p.ref;document.getElementById('sumText').textContent=text(p);document.getElementById('mailto').href='mailto:info@aslip.uz?subject='+encodeURIComponent((lang()==='uz'?'Ariza ':'Order request ')+p.ref)+'&body='+encodeURIComponent(text(p));renderTray();document.getElementById('done').scrollIntoView({behavior:'smooth',block:'start'})}
+ document.getElementById('copyBtn').addEventListener('click',function(){var b=this,t=document.getElementById('sumText').textContent;function ok(){b.textContent=T('Nusxa olindi','Copied')}function fb(){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){}document.body.removeChild(ta)}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb()});
+ document.getElementById('againBtn').addEventListener('click',function(){sent=false;document.getElementById('orderWrap').classList.remove('sent');form.reset();fillCounts();sel=[];render();document.getElementById('order').scrollIntoView({behavior:'smooth'})});
+ window.__orderRerender=function(){document.querySelectorAll('option[data-uz]').forEach(function(o){o.textContent=o.getAttribute('data-'+lang())});renderSel();renderTray();summary();if(sent&&lastPayload){document.getElementById('sumText').textContent=text(lastPayload)}};
+ window.__orderRerender();
 })();
 </script>
 
