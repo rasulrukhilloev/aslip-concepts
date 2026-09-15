@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>ASL IP Texnik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{--bg:#0e141b;--bg2:#141c25;--bg3:#1b2530;--ink:#e7edf3;--muted:#8c9aab;--line:#243140;--accent:#f0a325;--accent-ink:#141c25;--steel:#4d84ad;--logo-bg:#0e141b;
+--fd:'Barlow Condensed','Arial Narrow',Impact,sans-serif;--fb:'Barlow','Helvetica Neue',Arial,sans-serif;--fm:'JetBrains Mono',Menlo,Consolas,monospace}
+html{scroll-behavior:smooth;color-scheme:dark}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16.5px/1.6 var(--fb);-webkit-font-smoothing:antialiased}
+:root[data-lang="uz"] .en,:root[data-lang="en"] .uz{display:none!important}
+.wrap{width:min(1240px,100% - 48px);margin-inline:auto}
+@media (max-width:640px){.wrap{width:calc(100% - 32px)}}
+h1,h2,h3{font-family:var(--fd);font-weight:700;line-height:.94;margin:0;text-wrap:balance;text-transform:uppercase;letter-spacing:.005em}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+canvas{display:block;width:100%;height:100%}
+.mono{font-family:var(--fm);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.mono b{color:var(--accent);font-weight:600}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;background:var(--accent);color:var(--accent-ink);font:600 15px/1 var(--fb);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer;border-radius:2px}
+.btn:hover{background:#ffb640}
+.btn.line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--muted)}
+.btn.line:hover{box-shadow:inset 0 0 0 1px var(--ink);background:transparent}
+.more{font:600 14px/1 var(--fb);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--accent);display:inline-flex;gap:8px;align-items:center}
+.more::after{content:"→"}
+/* header */
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(14,20,27,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.hdr .wrap{display:flex;align-items:center;gap:28px;min-height:72px;position:relative}
+.logo{display:block;color:var(--ink);height:40px;width:156px;flex:none}
+.logo svg{width:100%;height:100%;display:block;overflow:visible}
+.nav{display:flex;gap:2px;list-style:none;margin:0 auto;padding:0}
+.nav a{display:block;text-decoration:none;font:600 13.5px/1 var(--fb);letter-spacing:.12em;text-transform:uppercase;padding:10px 12px;color:var(--muted);border-radius:2px}
+.nav a:hover{color:var(--ink);background:var(--bg3)}
+.tools{display:flex;align-items:center;gap:16px;flex:none}
+.lang{display:flex;border:1px solid var(--line);border-radius:2px;overflow:hidden}
+.lang button{background:transparent;border:0;padding:8px 11px;color:var(--muted);cursor:pointer;font:600 12px/1 var(--fm);letter-spacing:.1em}
+.lang button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.burger{display:none;background:none;border:1px solid var(--line);width:44px;height:40px;border-radius:2px;cursor:pointer;color:var(--ink);flex-direction:column;justify-content:center;align-items:center;gap:5px}
+.burger i{display:block;width:18px;height:2px;background:currentColor}
+@media (max-width:980px){
+ .nav{display:none}
+ .nav.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--bg2);border-bottom:1px solid var(--line);padding:10px 24px 18px;gap:0}
+ .nav.open a{padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
+ .tools .btn{display:none}
+ .burger{display:flex}
+}
+/* hero */
+.hero{position:relative;overflow:hidden;background:#111a24;border-bottom:1px solid var(--line)}
+.hero canvas{position:absolute;inset:0}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,20,27,.94) 0%,rgba(14,20,27,.7) 50%,rgba(14,20,27,.35) 100%);z-index:1}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(28px,4vw,64px);align-items:end;padding-block:clamp(56px,8vw,120px) clamp(40px,5vw,72px)}
+.hero h1{font-size:clamp(48px,7.2vw,112px);max-width:12ch}
+.hero .lead{max-width:50ch;color:#c2ccd7;font-size:18px;margin-top:22px}
+.hero .acts{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.panel{background:rgba(20,28,37,.82);border:1px solid var(--line);border-radius:3px;padding:18px 20px;font-family:var(--fm);font-size:12.5px;letter-spacing:.04em;backdrop-filter:blur(6px)}
+.panel .ph{display:flex;justify-content:space-between;color:var(--muted);text-transform:uppercase;font-size:11px;letter-spacing:.12em;padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:6px}
+.panel .ph b{color:var(--accent);font-weight:600}
+.panel dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:0 18px}
+.panel dt{color:var(--muted);text-transform:uppercase;padding:9px 0;border-bottom:1px solid var(--line);font-size:11px;letter-spacing:.1em}
+.panel dd{margin:0;padding:9px 0;border-bottom:1px solid var(--line);color:var(--ink);text-align:right;font-variant-numeric:tabular-nums}
+.panel dt:last-of-type,.panel dd:last-of-type{border-bottom:0}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr}}
+/* ticker */
+.ticker{border-bottom:1px solid var(--line);background:var(--bg2);overflow:hidden;white-space:nowrap;padding-block:11px}
+.ticker .track{display:inline-flex;gap:0;animation:tick 42s linear infinite}
+.ticker:hover .track{animation-play-state:paused}
+.ticker span.it{font-family:var(--fm);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:0 28px;display:inline-flex;align-items:center;gap:14px}
+.ticker span.it::before{content:"";width:7px;height:7px;background:var(--accent);border-radius:1px;flex:none}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.ticker{white-space:normal}.ticker .track{animation:none;flex-wrap:wrap;gap:8px 0}.ticker .track .dup{display:none}html{scroll-behavior:auto}}
+/* sections */
+.sec{padding-block:clamp(56px,7vw,100px);border-bottom:1px solid var(--line)}
+.sec-alt{background:var(--bg2)}
+.sec-head{display:grid;grid-template-columns:auto 1fr;gap:16px 48px;align-items:end;margin-bottom:clamp(32px,4vw,52px)}
+.sec-head h2{font-size:clamp(40px,5vw,72px);margin-top:8px}
+.sec-head p{max-width:58ch;color:var(--muted);font-size:16px}
+@media (max-width:760px){.sec-head{grid-template-columns:1fr}}
+/* count ruler */
+.ruler{background:var(--bg3);border:1px solid var(--line);border-radius:3px;padding:22px 22px 16px;margin-bottom:clamp(28px,4vw,44px);overflow-x:auto}
+.ruler svg{display:block;width:100%;min-width:640px;height:auto}
+.ruler .legend{display:flex;gap:26px;flex-wrap:wrap;margin-top:8px}
+.ruler .legend span{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.ruler .legend i{width:14px;height:8px;border-radius:1px;flex:none}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:24px}
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:3px;overflow:hidden;display:flex;flex-direction:column}
+.sec-alt .card{background:var(--bg)}
+.card .fig{aspect-ratio:16/9;position:relative;background:#2a323c}
+.card.tall .fig{aspect-ratio:4/3}
+.card .fig .lab{position:absolute;left:14px;top:14px;font-family:var(--fm);font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:rgba(14,20,27,.8);color:var(--ink);padding:6px 9px;border-radius:2px;border:1px solid var(--line)}
+.card .body{padding:22px 24px 26px;display:flex;flex-direction:column;gap:14px;flex:1}
+.card h3{font-size:34px}
+.card .body>p{color:var(--muted);font-size:15.5px}
+table.spec{width:100%;border-collapse:collapse;font-family:var(--fm);font-size:12.5px;letter-spacing:.02em;margin-top:4px}
+table.spec th{text-align:left;font-weight:400;color:var(--muted);text-transform:uppercase;font-size:11px;letter-spacing:.1em;padding:9px 0;border-top:1px solid var(--line);width:38%;vertical-align:top}
+table.spec td{padding:9px 0;border-top:1px solid var(--line);color:var(--ink);vertical-align:top;font-variant-numeric:tabular-nums}
+.card .more{margin-top:auto;padding-top:8px}
+/* about */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px);align-items:start}
+.about h2{font-size:clamp(40px,5vw,72px)}
+.about h2 em{font-style:normal;color:var(--accent)}
+.about .txt p{color:#c2ccd7;margin-top:18px;max-width:56ch}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.tile{background:var(--bg3);border:1px solid var(--line);border-radius:3px;padding:18px 18px 16px}
+.tile b{display:block;font-family:var(--fm);font-weight:600;font-size:clamp(30px,3.4vw,44px);line-height:1;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.tile b small{font-size:.45em;color:var(--muted);font-weight:400;margin-left:4px}
+.tile span{display:block;margin-top:10px;font-family:var(--fm);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.site{position:relative;aspect-ratio:2/1;border:1px solid var(--line);border-radius:3px;overflow:hidden;margin-top:14px;grid-column:1/-1;background:#4f6a3a}
+.site .lab{position:absolute;left:14px;bottom:14px;font-family:var(--fm);font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:rgba(14,20,27,.82);padding:7px 10px;border-radius:2px;border:1px solid var(--line)}
+.site .lab b{color:var(--accent);font-weight:600}
+@media (max-width:860px){.about{grid-template-columns:1fr}}
+/* quality */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
+.chip{font-family:var(--fm);font-size:12px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line);border-radius:2px;padding:9px 12px;display:inline-flex;gap:10px;align-items:center;background:var(--bg)}
+.chip::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none}
+.chip small{color:var(--muted);font-size:11px;text-transform:none;letter-spacing:0}
+.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.qgrid h3{font-size:28px;margin-bottom:12px}
+.pol{margin:0;padding:0;list-style:none}
+.pol li{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-top:1px solid var(--line);align-items:baseline}
+.pol a{text-decoration:none;font-weight:500}
+.pol a:hover{color:var(--accent)}
+.pol small{font-family:var(--fm);font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.qgrid .txt p{color:var(--muted);font-size:15.5px}
+@media (max-width:760px){.qgrid{grid-template-columns:1fr}}
+/* newsletter */
+.nlrow{display:flex;align-items:center;justify-content:space-between;gap:20px 48px;flex-wrap:wrap}
+.nlrow h3{font-size:30px}
+.nlrow p{color:var(--muted);margin-top:6px}
+.nl{flex:1 1 360px;max-width:520px}
+.nl .fields{display:flex;gap:8px}
+.nl input{flex:1;min-width:0;border:1px solid var(--line);border-radius:2px;padding:12px 14px;font:400 15px var(--fb);background:var(--bg3);color:var(--ink)}
+.nl input:focus{border-color:var(--accent);outline:none}
+.nl .thanks{display:none;font-family:var(--fm);font-size:13px;color:var(--accent)}
+.nl.done .fields{display:none}.nl.done .thanks{display:block}
+/* contact */
+.loc{display:grid;gap:0;border-top:1px solid var(--line)}
+.loc article{display:grid;grid-template-columns:1.1fr 1.6fr 1fr 1fr;gap:16px 32px;padding:22px 0;border-bottom:1px solid var(--line);align-items:start}
+.loc h3{font-size:28px}
+.loc p{color:var(--muted);font-size:15px}
+.loc a{display:block;text-decoration:none;font-weight:500}
+.loc a:hover{color:var(--accent)}
+.loc .geo{font-family:var(--fm);font-size:12px;letter-spacing:.06em;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:860px){.loc article{grid-template-columns:1fr 1fr}.loc .geo{text-align:left;grid-column:1/-1}}
+@media (max-width:520px){.loc article{grid-template-columns:1fr}}
+/* footer */
+footer{padding-block:40px 28px;font-size:14.5px}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+footer .logo{margin-bottom:14px}
+footer p{color:var(--muted);max-width:36ch}
+footer h4{font-family:var(--fm);font-weight:400;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+footer li a{text-decoration:none;color:#c2ccd7}
+footer li a:hover{color:var(--accent)}
+.fbot{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;color:var(--muted);font-family:var(--fm);font-size:11.5px;letter-spacing:.04em}
+.soc{display:flex;gap:16px}
+.soc a{text-decoration:none;text-transform:uppercase}
+.soc a:hover{color:var(--accent)}
+.grp{font-family:'Alfa Slab One',Georgia,serif;letter-spacing:.04em;font-size:13px}
+@media (max-width:900px){.fgrid{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.fgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<script>(function(){var l='uz';try{l=localStorage.getItem('aslip-lang')||l}catch(e){}var r=document.documentElement;r.setAttribute('data-lang',l);r.lang=l;})();</script>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="logo" viewBox="0 0 250 64"><g transform="translate(34,42)"><ellipse rx="32" ry="10" fill="currentColor"/><path d="M-9 -10 L 4 -10 L -2 10 L -15 10 Z" style="fill:var(--logo-bg,#fff)"/><rect x="-32" y="-1.2" width="18" height="2.4" style="fill:var(--logo-bg,#fff)"/></g><text x="78" y="52" font-family="'Alfa Slab One',Georgia,serif" font-size="40" fill="currentColor" letter-spacing="1">ASL IP</text></symbol></svg>
+
+<header class="hdr"><div class="wrap">
+ <a class="logo" href="#top" aria-label="ASL IP"><svg><use href="#logo"/></svg></a>
+ <ul class="nav" id="nav">
+  <li><a href="#about"><span class="uz">Korporativ</span><span class="en">Corporate</span></a></li>
+  <li><a href="#products"><span class="uz">Ip</span><span class="en">Yarn</span></a></li>
+  <li><a href="#dyeing"><span class="uz">Bo'yash</span><span class="en">Dyeing</span></a></li>
+  <li><a href="#quality"><span class="uz">Siyosatlar</span><span class="en">Policies</span></a></li>
+  <li><a href="#contact"><span class="uz">Yangiliklar</span><span class="en">News</span></a></li>
+  <li><a href="#contact"><span class="uz">Aloqa</span><span class="en">Contact</span></a></li>
+ </ul>
+ <div class="tools">
+  <div class="lang" role="group" aria-label="Language"><button type="button" data-setlang="uz" aria-pressed="true">UZ</button><button type="button" data-setlang="en" aria-pressed="false">EN</button></div>
+  <a class="btn" href="#contact"><span class="uz">Taklif so'rash</span><span class="en">Request a quote</span></a>
+  <button class="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu"><i></i><i></i><i></i></button>
+ </div>
+</div></header>
+
+<main id="top">
+<section class="hero"><canvas data-scene="hall" data-tint="#3f6f96" data-mul="rgba(20,34,50,.7)"></canvas><div class="wrap">
+ <div><span class="mono"><b>01</b> · <span class="uz">Akril va akril aralashmali iplar</span><span class="en">Acrylic and acrylic-blend yarns</span></span>
+  <h1 style="margin-top:16px"><span class="uz">O'zbekistonning eng yirik akril ip ishlab chiqaruvchisi</span><span class="en">Uzbekistan's largest acrylic yarn producer</span></h1>
+  <p class="lead"><span class="uz">Zamonaviy korxonalarimizda trikotaj, to'quv va qo'lda to'qish uchun iplar ishlab chiqaramiz. Nm2 dan Nm60 gacha, bobina, kalava va jgutda bo'yash.</span><span class="en">We spin knitting, weaving and hand-knitting yarns in state-of-the-art facilities. Nm2 to Nm60, dyed on cone, in hank or as tow.</span></p>
+  <div class="acts"><a class="btn" href="#products"><span class="uz">Mahsulotlarni ko'rish</span><span class="en">Explore products</span></a><a class="btn line" href="#contact"><span class="uz">Taklif so'rash</span><span class="en">Request a quote</span></a></div></div>
+ <div class="panel"><div class="ph"><span><span class="uz">Texnik ma'lumot</span><span class="en">Datasheet</span></span><b>ASL-IP / 2026</b></div>
+  <dl><dt><span class="uz">Mahsulot</span><span class="en">Product</span></dt><dd><span class="uz">Akril, aralashmalar</span><span class="en">Acrylic, blends</span></dd>
+   <dt><span class="uz">Nomer</span><span class="en">Count</span></dt><dd>Nm 2–60</dd>
+   <dt>Format</dt><dd><span class="uz">Bobina · Kalava · Jgut</span><span class="en">Cone · Hank · Tow</span></dd>
+   <dt><span class="uz">Elastan</span><span class="en">Elastane</span></dt><dd>PBT · Lycra</dd>
+   <dt>Eksport</dt><dd>18 <span class="uz">mamlakat</span><span class="en">countries</span></dd>
+   <dt><span class="uz">Maydonchalar</span><span class="en">Sites</span></dt><dd>3</dd></dl></div>
+</div></section>
+<div class="ticker" aria-hidden="true"><div class="track">
+ <span class="it"><span class="uz">Akril va akril aralashmali iplar bo'yicha O'zbekistonning eng yirik ishlab chiqaruvchisi</span><span class="en">Uzbekistan's largest producer of acrylic and acrylic-blend yarns</span></span>
+ <span class="it"><span class="uz">Zamonaviy korxonalarimizda trikotaj, to'quv va qo'lda to'qish iplari</span><span class="en">Knitting, weaving and hand-knitting yarns from state-of-the-art facilities</span></span>
+ <span class="it"><span class="uz">20 ga yaqin mamlakatga eksport</span><span class="en">Exporting to nearly 20 countries</span></span>
+ <span class="it dup"><span class="uz">Akril va akril aralashmali iplar bo'yicha O'zbekistonning eng yirik ishlab chiqaruvchisi</span><span class="en">Uzbekistan's largest producer of acrylic and acrylic-blend yarns</span></span>
+ <span class="it dup"><span class="uz">Zamonaviy korxonalarimizda trikotaj, to'quv va qo'lda to'qish iplari</span><span class="en">Knitting, weaving and hand-knitting yarns from state-of-the-art facilities</span></span>
+ <span class="it dup"><span class="uz">20 ga yaqin mamlakatga eksport</span><span class="en">Exporting to nearly 20 countries</span></span>
+</div></div>
+
+<section class="sec" id="products"><div class="wrap">
+ <div class="sec-head"><div><span class="mono"><b>02</b> · <span class="uz">Mahsulotlar</span><span class="en">Products</span></span><h2><span class="uz">Ip</span><span class="en">Yarn</span></h2></div>
+  <p><span class="uz">Trikotaj, to'quv va qo'lda to'qish uchun 100% akril va aralashmali iplar. Har bir partiya mijoz spetsifikatsiyasi bo'yicha ishlab chiqariladi.</span><span class="en">100% acrylic and blended yarns for knitting, weaving and hand-knitting. Every lot is spun to the customer's specification.</span></p></div>
+ <div class="ruler">
+  <svg viewBox="0 0 1000 122" role="img" aria-label="Yarn count ranges: fancy Nm2 to Nm16, worsted Nm4 to Nm60">
+   <g font-family="JetBrains Mono,Menlo,monospace" font-size="11" fill="#8c9aab">
+    <rect x="40" y="8" width="236" height="16" rx="2" fill="#f0a325"/><text x="286" y="20" fill="#c2ccd7" font-size="11.5" letter-spacing="1">FANTAZIYA · FANCY  Nm 2–16</text>
+    <text x="102" y="45" fill="#c2ccd7" font-size="11.5" letter-spacing="1">KAMVOL · WORSTED  Nm 4–60</text><rect x="99" y="51" width="861" height="16" rx="2" fill="#4d84ad"/>
+    <line x1="40" y1="90" x2="960" y2="90" stroke="#243140" stroke-width="1"/>
+    <g stroke="#243140"><line x1="40" y1="84" x2="40" y2="96"/><line x1="99" y1="84" x2="99" y2="96"/><line x1="158" y1="84" x2="158" y2="96"/><line x1="276" y1="84" x2="276" y2="96"/><line x1="394" y1="84" x2="394" y2="96"/><line x1="512" y1="84" x2="512" y2="96"/><line x1="630" y1="84" x2="630" y2="96"/><line x1="748" y1="84" x2="748" y2="96"/><line x1="866" y1="84" x2="866" y2="96"/><line x1="960" y1="84" x2="960" y2="96"/></g>
+    <text x="40" y="114" text-anchor="middle">Nm 2</text><text x="99" y="114" text-anchor="middle">4</text><text x="158" y="114" text-anchor="middle">8</text><text x="276" y="114" text-anchor="middle">16</text><text x="394" y="114" text-anchor="middle">24</text><text x="512" y="114" text-anchor="middle">32</text><text x="630" y="114" text-anchor="middle">40</text><text x="748" y="114" text-anchor="middle">48</text><text x="866" y="114" text-anchor="middle">56</text><text x="960" y="114" text-anchor="middle">60</text>
+   </g>
+  </svg>
+  <div class="legend"><span><i style="background:#f0a325"></i><span class="uz">Fantaziya ip · qalin nomerlar</span><span class="en">Fancy yarn · coarse counts</span></span><span><i style="background:#4d84ad"></i><span class="uz">Kamvol ip · ingichka nomerlargacha</span><span class="en">Worsted yarn · up to fine counts</span></span><span><span class="uz">Nm = metrik nomer (m/g)</span><span class="en">Nm = metric count (m/g)</span></span></div>
+ </div>
+ <div class="grid2">
+  <article class="card"><div class="fig"><canvas data-scene="spinning"></canvas><span class="lab">KMV · Nm 4–60</span></div>
+   <div class="body"><h3><span class="uz">Kamvol ip</span><span class="en">Worsted yarn</span></h3>
+    <p><span class="uz">Mijozlarimiz ehtiyojiga ko'ra Nm4 dan Nm60 gacha bo'lgan iplarni 100% akril, akril-jun, akril-poliamid, akril-neylon aralashmali, elastanli (PBT va laykra) hamda elastansiz ko'rinishda ishlab chiqaramiz.</span><span class="en">We produce yarns from Nm4 to Nm60 to our customers' needs: 100% acrylic, acrylic-wool, acrylic-polyamide and acrylic-nylon blends, with elastane (PBT and lycra) or without.</span></p>
+    <table class="spec"><tr><th><span class="uz">Nomer</span><span class="en">Count</span></th><td>Nm 4 – Nm 60</td></tr><tr><th><span class="uz">Tarkib</span><span class="en">Composition</span></th><td>100% PAN · PAN/WO · PAN/PA · PAN/PA6</td></tr><tr><th><span class="uz">Elastan</span><span class="en">Elastane</span></th><td>PBT / Lycra · <span class="uz">ixtiyoriy</span><span class="en">optional</span></td></tr><tr><th><span class="uz">Qo'llanish</span><span class="en">Use</span></th><td><span class="uz">Trikotaj, to'quv</span><span class="en">Knitting, weaving</span></td></tr></table>
+    <a class="more" href="#contact"><span class="uz">Batafsil</span><span class="en">Details</span></a></div></article>
+  <article class="card"><div class="fig"><canvas data-scene="creel"></canvas><span class="lab">FNT · Nm 2–16</span></div>
+   <div class="body"><h3><span class="uz">Fantaziya ip</span><span class="en">Fancy yarn</span></h3>
+    <p><span class="uz">Nm2 dan Nm16 gacha bo'lgan iplarni mijozlarimiz talab qilgan aralashma va nomerlarda, elastanli (PBT va laykra) va elastansiz, tukli (shardonlangan) va tuksiz ko'rinishda ishlab chiqaramiz.</span><span class="en">We produce yarns from Nm2 to Nm16 in the blends and counts our customers request, with or without elastane (PBT and lycra), brushed or unbrushed.</span></p>
+    <table class="spec"><tr><th><span class="uz">Nomer</span><span class="en">Count</span></th><td>Nm 2 – Nm 16</td></tr><tr><th><span class="uz">Tarkib</span><span class="en">Composition</span></th><td><span class="uz">Mijoz talabiga ko'ra</span><span class="en">To customer request</span></td></tr><tr><th><span class="uz">Elastan</span><span class="en">Elastane</span></th><td>PBT / Lycra · <span class="uz">ixtiyoriy</span><span class="en">optional</span></td></tr><tr><th><span class="uz">Ishlov</span><span class="en">Finish</span></th><td><span class="uz">Tukli (shardon) yoki tuksiz</span><span class="en">Brushed or plain</span></td></tr></table>
+    <a class="more" href="#contact"><span class="uz">Batafsil</span><span class="en">Details</span></a></div></article>
+ </div>
+</div></section>
+
+<section class="sec sec-alt" id="about"><div class="wrap about">
+ <div class="txt"><span class="mono"><b>03</b> · <span class="uz">Biz haqimizda</span><span class="en">About us</span></span>
+  <h2 style="margin-top:14px"><span class="uz">O'zbekistonning <em>eng yirik</em> ip ishlab chiqaruvchisi</span><span class="en">Uzbekistan's <em>largest</em> yarn producer</span></h2>
+  <p class="uz">Akril va akril aralashmali ip ishlab chiqarishda O'zbekistonning eng yirik ishlab chiqaruvchisi bo'lgan ASL IP Markaziy Osiyoning yetakchi korxonalaridan biridir. Jami 18 mamlakatga eksport qilib, O'zbekistondagi akril va akril aralashmali ipga bo'lgan ehtiyojning 45 foizini ASL IP qondiradi.</p>
+  <p class="uz">ASL IP zamonaviy ishlab chiqarish quvvatlari bilan sohadagi mavjud sifatlarni ishlab chiqarish bilan birga, bozor ehtiyojlarini hisobga olib, narx ustunligini taklif etadi va yangi mahsulotlar yaratish ustida ishlab, sohaning yetakchi korxonasi hisoblanadi.</p>
+  <p class="en">ASL IP, the largest producer of acrylic and acrylic-blend yarn in Uzbekistan, is also among the leading producers in Central Asia. Exporting to 18 countries in total, ASL IP meets 45 percent of Uzbekistan's demand for acrylic and acrylic-blend yarn.</p>
+  <p class="en">With state-of-the-art production facilities, ASL IP not only spins the qualities the sector already knows but watches what the market needs, offers a price advantage and keeps developing new products, which makes it the sector's pioneering company.</p></div>
+ <div class="tiles">
+  <div class="tile"><b>18</b><span><span class="uz">Eksport mamlakatlari</span><span class="en">Export countries</span></span></div>
+  <div class="tile"><b>45<small>%</small></b><span><span class="uz">Ichki bozordagi ulush</span><span class="en">Share of domestic demand</span></span></div>
+  <div class="tile"><b>12 000<small>t / yil</small></b><span><span class="uz">Yillik ip quvvati</span><span class="en">Annual yarn capacity</span></span></div>
+  <div class="tile"><b>3</b><span><span class="uz">Ishlab chiqarish maydonchalari</span><span class="en">Production sites</span></span></div>
+  <div class="site"><canvas data-scene="factory" data-brand="#f0a325"></canvas><div class="lab"><b>NAMANGAN</b> · 41.00°N 71.24°E</div></div>
+ </div>
+</div></section>
+
+<section class="sec" id="dyeing"><div class="wrap">
+ <div class="sec-head"><div><span class="mono"><b>04</b> · <span class="uz">Mahsulotlar</span><span class="en">Products</span></span><h2><span class="uz">Bo'yash</span><span class="en">Dyeing</span></h2></div>
+  <p><span class="uz">O'z bo'yash sexlarimizda ip bobina, kalava va jgut ko'rinishida bo'yaladi. Rang retsepturalari laboratoriyada tasdiqlanadi va har partiyada takrorlanadi.</span><span class="en">Our own dyehouses dye yarn on cone, in hank and as tow. Shade recipes are matched in the lab and repeated lot after lot.</span></p></div>
+ <div class="grid2" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))">
+  <article class="card tall"><div class="fig"><canvas data-scene="bobbins"></canvas><span class="lab">BOB</span></div>
+   <div class="body"><h3><span class="uz">Bobina</span><span class="en">Cone</span></h3><p><span class="uz">Yumshoq o'ramli bobinalarda bir xil rang va yuqori ranglilik chidamliligi.</span><span class="en">Even shade and high colour fastness on soft-wound packages.</span></p>
+    <table class="spec"><tr><th><span class="uz">Partiya</span><span class="en">Lot</span></th><td>50 – 1 000 kg</td></tr><tr><th><span class="uz">O'ram</span><span class="en">Package</span></th><td>0,9 – 1,5 kg</td></tr><tr><th><span class="uz">Chidamlilik</span><span class="en">Fastness</span></th><td>4–5 (ISO 105-C06)</td></tr></table></div></article>
+  <article class="card tall"><div class="fig"><canvas data-scene="hanks"></canvas><span class="lab">KLV</span></div>
+   <div class="body"><h3><span class="uz">Kalava</span><span class="en">Hank</span></h3><p><span class="uz">Qo'lda to'qish va hajmli iplar uchun an'anaviy kalava bo'yash.</span><span class="en">Traditional hank dyeing for hand-knitting and bulky yarns.</span></p>
+    <table class="spec"><tr><th><span class="uz">Partiya</span><span class="en">Lot</span></th><td>20 – 300 kg</td></tr><tr><th><span class="uz">Kalava</span><span class="en">Hank</span></th><td>100 – 500 g</td></tr><tr><th><span class="uz">Chidamlilik</span><span class="en">Fastness</span></th><td>4–5 (ISO 105-C06)</td></tr></table></div></article>
+  <article class="card tall"><div class="fig"><canvas data-scene="tow"></canvas><span class="lab">TOW</span></div>
+   <div class="body"><h3>Tow</h3><p><span class="uz">Tola bosqichida bo'yash orqali melanj va to'q ranglarda barqaror natija.</span><span class="en">Fibre-stage dyeing for stable results in melange and deep shades.</span></p>
+    <table class="spec"><tr><th><span class="uz">Partiya</span><span class="en">Lot</span></th><td>500 – 3 000 kg</td></tr><tr><th><span class="uz">Qo'llanish</span><span class="en">Use</span></th><td><span class="uz">Melanj, to'q ranglar</span><span class="en">Melange, deep shades</span></td></tr><tr><th><span class="uz">Chidamlilik</span><span class="en">Fastness</span></th><td>4–5 (ISO 105-C06)</td></tr></table></div></article>
+ </div>
+</div></section>
+
+<section class="sec sec-alt" id="quality"><div class="wrap">
+ <div class="sec-head"><div><span class="mono"><b>05</b> · <span class="uz">Korporativ</span><span class="en">Corporate</span></span><h2><span class="uz">Sifat va sertifikatlar</span><span class="en">Quality and certificates</span></h2></div></div>
+ <div class="chips">
+  <span class="chip">GRS <small><span class="uz">Global qayta ishlash standarti</span><span class="en">Global Recycled Standard</span></small></span>
+  <span class="chip">RCS <small><span class="uz">Qayta ishlangan tarkib</span><span class="en">Recycled Claim Standard</span></small></span>
+  <span class="chip">OEKO-TEX <small>Standard 100</small></span>
+  <span class="chip">ISO 9001 <small><span class="uz">Sifat</span><span class="en">Quality</span></small></span>
+  <span class="chip">ISO 14001 <small><span class="uz">Atrof-muhit</span><span class="en">Environment</span></small></span>
+  <span class="chip">ISO 27001 <small><span class="uz">Axborot xavfsizligi</span><span class="en">Information security</span></small></span>
+  <span class="chip">ISO 50001 <small><span class="uz">Energiya</span><span class="en">Energy</span></small></span>
+ </div>
+ <div class="qgrid">
+  <div><h3><span class="uz">Siyosatlarimiz</span><span class="en">Our policies</span></h3>
+   <ul class="pol">
+    <li><a href="#quality"><span class="uz">Sifat siyosati</span><span class="en">Quality policy</span></a><small>KYS-008</small></li>
+    <li><a href="#quality"><span class="uz">Atrof-muhit siyosati</span><span class="en">Environmental policy</span></a><small>ISO 14001</small></li>
+    <li><a href="#quality"><span class="uz">Energiya siyosati</span><span class="en">Energy policy</span></a><small>ISO 50001</small></li>
+    <li><a href="#quality"><span class="uz">Axborot xavfsizligi siyosati</span><span class="en">Information security policy</span></a><small>ISO 27001</small></li>
+    <li><a href="#quality"><span class="uz">Mehnat muhofazasi va xavfsizlik siyosati</span><span class="en">Occupational health and safety policy</span></a><small>OHS</small></li>
+    <li><a href="#quality"><span class="uz">Cookie siyosati</span><span class="en">Cookie policy</span></a><small>PDF</small></li>
+   </ul></div>
+  <div class="txt"><h3><span class="uz">Laboratoriya nazorati</span><span class="en">Laboratory control</span></h3>
+   <p class="uz">Har bir partiya ip nomeri, burama soni, uzilish kuchi va cho'zilish bo'yicha tekshiriladi. Bo'yalgan iplar yuvish, ishqalanish va yorug'likka chidamlilik testlaridan o'tadi, natijalar sertifikat bilan yetkaziladi.</p>
+   <p class="en">Every lot is checked for count, twist, tenacity and elongation. Dyed yarns pass washing, rubbing and light-fastness tests, and the results ship with the goods as a certificate of analysis.</p></div>
+ </div>
+</div></section>
+
+<section class="sec"><div class="wrap nlrow">
+ <div><h3><span class="uz">Yangiliklar obunasi</span><span class="en">Newsletter</span></h3><p><span class="uz">Yangi mahsulotlar va maxsus takliflardan birinchi bo'lib xabardor bo'ling.</span><span class="en">Be the first to hear about new products and special offers.</span></p></div>
+ <form class="nl" novalidate><div class="fields"><label for="nl-email" hidden>Email</label><input id="nl-email" type="email" name="email" placeholder="Elektron pochta" data-ph-uz="Elektron pochta" data-ph-en="Email address" required><button class="btn" type="submit"><span class="uz">Yuborish</span><span class="en">Send</span></button></div><p class="thanks"><span class="uz">Rahmat! Obuna qabul qilindi.</span><span class="en">Thank you! You are subscribed.</span></p></form>
+</div></section>
+
+<section class="sec sec-alt" id="contact"><div class="wrap">
+ <div class="sec-head"><div><span class="mono"><b>06</b> · <span class="uz">Aloqa</span><span class="en">Contact</span></span><h2><span class="uz">Biz bilan bog'laning</span><span class="en">Get in touch</span></h2></div>
+  <p><span class="uz">Namunalar, narx so'rovlari va texnik savollar uchun bosh ofis yoki fabrikalarimizga murojaat qiling.</span><span class="en">For samples, price enquiries and technical questions, contact the head office or either mill directly.</span></p></div>
+ <div class="loc">
+  <article><h3><span class="uz">Bosh ofis</span><span class="en">Head office</span></h3><p><span class="uz">Toshkent sh., Yunusobod tumani, Amir Temur shoh ko'chasi 107A, 311-ofis</span><span class="en">Amir Temur Avenue 107A, Office 311, Yunusabad district, Tashkent</span></p><div><a href="tel:+998712004560">+998 (71) 200 45 60</a><a href="mailto:info@aslip.uz">info@aslip.uz</a></div><div class="geo">41.33°N 69.29°E<br>UTC+5</div></article>
+  <article><h3><span class="uz">Namangan fabrikasi</span><span class="en">Namangan mill</span></h3><p><span class="uz">Namangan viloyati, Chust tumani, Sanoat zonasi, 12-bino</span><span class="en">Industrial zone, Building 12, Chust district, Namangan region</span></p><div><a href="tel:+998692341020">+998 (69) 234 10 20</a><a href="mailto:namangan@aslip.uz">namangan@aslip.uz</a></div><div class="geo">41.00°N 71.24°E<br><span class="uz">Yigiruv · bo'yash</span><span class="en">Spinning · dyeing</span></div></article>
+  <article><h3><span class="uz">Andijon fabrikasi</span><span class="en">Andijan mill</span></h3><p><span class="uz">Andijon viloyati, Asaka tumani, "Andijon" erkin iqtisodiy zonasi, 7-uchastka</span><span class="en">"Andijan" free economic zone, Lot 7, Asaka district, Andijan region</span></p><div><a href="tel:+998742893040">+998 (74) 289 30 40</a><a href="mailto:andijon@aslip.uz">andijon@aslip.uz</a></div><div class="geo">40.64°N 72.24°E<br><span class="uz">Yigiruv</span><span class="en">Spinning</span></div></article>
+ </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+ <div class="fgrid">
+  <div><a class="logo" href="#top" aria-label="ASL IP"><svg><use href="#logo"/></svg></a><p><span class="uz">Akril va akril aralashmali iplar: kamvol, fantaziya, bobina, kalava va jgutda bo'yash.</span><span class="en">Acrylic and acrylic-blend yarns: worsted, fancy, and dyeing on cone, in hank and as tow.</span></p></div>
+  <div><h4><span class="uz">Korporativ</span><span class="en">Corporate</span></h4><ul><li><a href="#about"><span class="uz">Biz haqimizda</span><span class="en">About us</span></a></li><li><a href="#quality"><span class="uz">Sifat sertifikatlari</span><span class="en">Quality certificates</span></a></li><li><a href="#quality"><span class="uz">Siyosatlar</span><span class="en">Policies</span></a></li><li><a href="#contact"><span class="uz">Yangiliklar</span><span class="en">News</span></a></li></ul></div>
+  <div><h4><span class="uz">Mahsulotlar</span><span class="en">Products</span></h4><ul><li><a href="#products"><span class="uz">Kamvol ip</span><span class="en">Worsted yarn</span></a></li><li><a href="#products"><span class="uz">Fantaziya ip</span><span class="en">Fancy yarn</span></a></li><li><a href="#dyeing"><span class="uz">Bobinada bo'yash</span><span class="en">Cone dyeing</span></a></li><li><a href="#dyeing"><span class="uz">Kalava va jgut</span><span class="en">Hank and tow</span></a></li></ul></div>
+  <div><h4><span class="uz">Ma'lumot</span><span class="en">Information</span></h4><ul><li><a href="#contact"><span class="uz">Yetkazib berish va qaytarish</span><span class="en">Shipping and returns</span></a></li><li><a href="#quality"><span class="uz">Maxfiylik siyosati</span><span class="en">Privacy notice</span></a></li><li><a href="#quality"><span class="uz">Foydalanish shartlari</span><span class="en">Terms of use</span></a></li><li><a href="#contact"><span class="uz">Biz bilan bog'laning</span><span class="en">Contact us</span></a></li></ul></div>
+ </div>
+ <div class="fbot">
+  <span>© 2026 ASL IP · <span class="uz">Barcha huquqlar himoyalangan</span><span class="en">All rights reserved</span></span>
+  <span class="grp"><span class="uz">AslTeks Holding tarkibida</span><span class="en">A member of AslTeks Holding</span></span>
+  <div class="soc"><a href="#top">Facebook</a><a href="#top">Instagram</a><a href="#top">LinkedIn</a><a href="#top">YouTube</a></div>
+ </div>
+</div></footer>
+<script>
+/* YarnScenes — procedural spinning-mill imagery drawn on <canvas data-scene="..."> */
+window.YarnScenes=(function(){
+const TAU=Math.PI*2,L=(a,b,t)=>a+(b-a)*t;
+function rng(seed){let s=(Math.imul((seed|0)+1,2654435761)+1013904223)>>>0||7;return()=>{s^=s<<13;s>>>=0;s^=s>>>17;s^=s<<5;s>>>=0;return s/4294967296;};}
+function lin(ctx,x0,y0,x1,y1,st){const g=ctx.createLinearGradient(x0,y0,x1,y1);for(const [t,c] of st)g.addColorStop(t,c);return g;}
+function rad(ctx,x,y,r0,r1,st){const g=ctx.createRadialGradient(x,y,r0,x,y,r1);for(const [t,c] of st)g.addColorStop(t,c);return g;}
+function ell(ctx,x,y,rx,ry){ctx.beginPath();ctx.ellipse(x,y,Math.max(.2,rx),Math.max(.2,ry),0,0,TAU);}
+function poly(ctx,p){ctx.beginPath();p.forEach((q,i)=>i?ctx.lineTo(q[0],q[1]):ctx.moveTo(q[0],q[1]));ctx.closePath();}
+function rrect(ctx,x,y,w,h,r){r=Math.max(0,Math.min(r,w/2,h/2));ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
+function finish(ctx,w,h,o,R){
+  ctx.fillStyle=rad(ctx,w/2,h/2,Math.min(w,h)*.4,Math.hypot(w,h)*.62,[[0,'rgba(0,0,0,0)'],[1,'rgba(0,0,0,'+(o.vignette==null?.35:o.vignette)+')']]);ctx.fillRect(0,0,w,h);
+  if(o.tint){ctx.save();ctx.globalCompositeOperation='color';ctx.fillStyle=o.tint;ctx.fillRect(0,0,w,h);ctx.globalCompositeOperation='multiply';ctx.fillStyle=o.mul||'rgba(36,58,80,.6)';ctx.fillRect(0,0,w,h);ctx.restore();}
+  const n=Math.min(9000,Math.round(w*h/350));ctx.fillStyle='rgba(255,255,255,.07)';for(let i=0;i<n;i++)ctx.fillRect(R()*w,R()*h,1,1);ctx.fillStyle='rgba(0,0,0,.07)';for(let i=0;i<n;i++)ctx.fillRect(R()*w,R()*h,1,1);
+}
+/* 1. Rack of cylindrical yarn packages, front view, receding to the right */
+function pack(ctx,x,y,r,t){const bw=r*1.15,rx=r*.9;
+  ctx.beginPath();ctx.moveTo(x,y-r);ctx.lineTo(x+bw,y-r*.93);ctx.lineTo(x+bw,y+r*.93);ctx.lineTo(x,y+r);ctx.closePath();
+  ctx.fillStyle=lin(ctx,x,0,x+bw,0,[[0,'#d5d2ca'],[.45,'#bdbab2'],[1,'#7f7d79']]);ctx.fill();
+  ctx.save();ctx.clip();ctx.strokeStyle='rgba(255,255,255,.14)';ctx.lineWidth=1;
+  for(let i=0;i<26;i++){const yy=y-r+i/26*2*r;ctx.beginPath();ctx.moveTo(x,yy);ctx.lineTo(x+bw,yy+(i%2?r*.22:-r*.22));ctx.stroke();}
+  ctx.restore();
+  ell(ctx,x,y,rx,r);ctx.fillStyle=rad(ctx,x-r*.3,y-r*.3,r*.05,r*1.15,[[0,'#f2f0ea'],[.55,'#d2cfc7'],[1,'#8a8882']]);ctx.fill();
+  ctx.strokeStyle='rgba(40,40,44,.11)';ctx.lineWidth=1;for(let k=1;k<14;k++){ell(ctx,x,y,rx*k/14,r*k/14);ctx.stroke();}
+  ell(ctx,x,y,r*.11,r*.12);ctx.fillStyle='#26272b';ctx.fill();ell(ctx,x+r*.012,y-r*.012,r*.065,r*.075);ctx.fillStyle='#5a5b61';ctx.fill();
+  if(t>0){ctx.fillStyle='rgba(46,50,57,'+(t*.5)+')';ctx.beginPath();ctx.moveTo(x,y-r);ctx.lineTo(x+bw,y-r*.93);ctx.lineTo(x+bw,y+r*.93);ctx.lineTo(x,y+r);ctx.closePath();ctx.ellipse(x,y,rx,r,0,0,TAU);ctx.fill();}
+}
+function cones(ctx,w,h,o){const R=rng(o.seed||11);
+  ctx.fillStyle=lin(ctx,0,0,0,h,[[0,'#454a52'],[1,'#22252a']]);ctx.fillRect(0,0,w,h);
+  const rows=[[h*1.0,h*.34],[h*.40,h*.36]];
+  for(const [cy,r0] of rows){const items=[];let x=-w*.04;for(let i=0;i<10;i++){const t=i/9,r=r0*(1-.72*t);items.push([x+r*.92,cy-(r0-r)*.35,r,t]);x+=r*1.55;}
+    for(let i=items.length-1;i>=0;i--)pack(ctx,items[i][0],items[i][1],items[i][2],items[i][3]);}
+  finish(ctx,w,h,o,R);}
+/* 2. One-point-perspective spinning hall (creel variant: cream cones on the right, golden floor) */
+function hall(ctx,w,h,o){const R=rng(o.seed||22);const vx=w*.5,vy=h*.45,gold=!!o.creel;
+  ctx.fillStyle=lin(ctx,0,0,0,vy,[[0,'#2f353c'],[1,'#8a929b']]);ctx.fillRect(0,0,w,vy);
+  ctx.fillStyle=gold?lin(ctx,0,vy,0,h,[[0,'#a48a4e'],[.5,'#c9a85c'],[1,'#e2c477']]):lin(ctx,0,vy,0,h,[[0,'#8d959e'],[.5,'#b6bdc4'],[1,'#dfe3e7']]);ctx.fillRect(0,vy,w,h-vy);
+  poly(ctx,[[vx,vy],[w*.78,h],[w*.22,h]]);ctx.fillStyle=lin(ctx,0,vy,0,h,[[0,'rgba(255,255,255,0)'],[1,'rgba(255,255,255,.38)']]);ctx.fill();
+  for(let k=0;k<18;k++){const d=1-Math.pow(1-k/18,2.2);const y=L(-4,vy,d),half=L(w*.24,0,d),th=L(7,1,d);
+    ctx.fillStyle='rgba(255,255,255,'+L(.05,0,d)+')';ctx.fillRect(vx-half*1.15,y-th,half*2.3,th*3);
+    ctx.fillStyle='rgba(245,248,255,'+L(.9,.35,d)+')';ctx.fillRect(vx-half,y,half*2,th);}
+  const side=(sgn,creel)=>{const nx=vx+sgn*w*.30,top=h*.16,bot=h*1.02;
+    poly(ctx,[[nx,top],[vx,vy],[nx,bot]]);ctx.fillStyle=lin(ctx,nx,0,vx,0,[[0,'#6d7580'],[1,'#a9b0b8']]);ctx.fill();
+    poly(ctx,[[nx-sgn*w*.30,top-h*.06],[nx,top],[vx,vy]]);ctx.fillStyle='#c7ccd2';ctx.fill();
+    const N=64;for(let k=N;k>=0;k--){const d=1-Math.pow(1-k/N,2.4);if(d>.985)continue;const x=L(nx,vx,d),t=L(top,vy,d),b=L(bot,vy,d),H=b-t,ww=L(w*.06,0,d);if(ww<.6)continue;const xs=sgn>0?x:x-ww;
+      if(creel){for(let r=0;r<3;r++){const cy=t+H*(.12+r*.22),rr=ww*.42,cx=x+sgn*ww*.35;ell(ctx,cx,cy,rr*.75,rr);ctx.fillStyle=lin(ctx,cx-rr,0,cx+rr,0,[[0,'#f6f4ee'],[1,'#c9c6bd']]);ctx.fill();ell(ctx,cx,cy,rr*.5,rr*.68);ctx.strokeStyle='rgba(190,40,60,.55)';ctx.lineWidth=Math.max(.5,rr*.12);ctx.stroke();ell(ctx,cx,cy,rr*.18,rr*.24);ctx.fillStyle='#5a5148';ctx.fill();}
+        ctx.fillStyle='#6f7680';ctx.fillRect(xs,t+H*.74,ww,H*.26);}
+      else{ctx.fillStyle=d<.5?'#d9dde2':'#c3c8ce';ctx.fillRect(xs,t+H*.34,ww,H*.40);
+        ctx.fillStyle='#2c3138';ctx.fillRect(xs,t+H*.34,ww,H*.03);ctx.fillRect(xs,t+H*.62,ww,H*.02);
+        ell(ctx,x+sgn*ww*.4,t+H*.16,ww*.36,ww*.42);ctx.fillStyle='#eeece6';ctx.fill();ell(ctx,x+sgn*ww*.4,t+H*.16,ww*.09,ww*.11);ctx.fillStyle='#3a3b40';ctx.fill();
+        ctx.fillStyle='#8b929b';ctx.fillRect(xs,t+H*.76,ww,H*.24);}
+    }};
+  side(-1,false);side(1,!!o.creel);
+  finish(ctx,w,h,o,R);}
+/* 3. Sliver (tow) cans with slivers looping down from an overhead rail */
+function can(ctx,x,y,cw,ch,sh,R){const ry=cw*.16;
+  ctx.lineCap='round';for(let k=0;k<3;k++){const sx=x+cw*(.3+.2*k),top=y-ch*.95-R()*ch*.1;ctx.lineWidth=cw*.11;ctx.strokeStyle='rgba(222,224,227,'+sh+')';ctx.beginPath();ctx.moveTo(sx+cw*.3*(R()-.5),top);ctx.bezierCurveTo(sx-cw*.45,top+ch*.35,sx+cw*.35,y-ch*.25,x+cw*(.25+.25*k),y);ctx.stroke();ctx.lineWidth=cw*.035;ctx.strokeStyle='rgba(255,255,255,.65)';ctx.stroke();}
+  ctx.fillStyle=lin(ctx,x,0,x+cw,0,[[0,'#9aa0a6'],[.25,'#f2f3f4'],[.6,'#e6e8ea'],[1,'#8d9399']]);ctx.fillRect(x,y,cw,ch);ell(ctx,x+cw/2,y+ch,cw/2,ry);ctx.fill();
+  ctx.fillStyle='rgba(90,96,102,.35)';ctx.fillRect(x,y+ch*.06,cw,ch*.02);ctx.fillRect(x,y+ch*.9,cw,ch*.02);
+  ell(ctx,x+cw/2,y,cw/2,ry);ctx.fillStyle='#dcdfe2';ctx.fill();
+  ctx.strokeStyle='rgba(255,255,255,.8)';ctx.lineWidth=cw*.05;for(let k=0;k<6;k++){ell(ctx,x+cw*(.3+.4*R()),y-ry*.2+ry*.4*(R()-.5),cw*.18*(.6+R()*.6),ry*.8);ctx.stroke();}
+  ctx.fillStyle='#3a3f45';ell(ctx,x+cw*.2,y+ch+ry*.6,cw*.07,cw*.07);ctx.fill();ell(ctx,x+cw*.8,y+ch+ry*.6,cw*.07,cw*.07);ctx.fill();
+  if(sh<1){ctx.fillStyle='rgba(90,100,110,'+((1-sh)*1.5)+')';ctx.fillRect(x-1,y-ry-1,cw+2,ch+2*ry+2);}
+}
+function cans(ctx,w,h,o){const R=rng(o.seed||33);
+  ctx.fillStyle=lin(ctx,0,0,0,h,[[0,'#5d6570'],[.45,'#7e8792'],[.46,'#aab1b9'],[1,'#c8cdd3']]);ctx.fillRect(0,0,w,h);
+  ctx.fillStyle='#4a525c';ctx.fillRect(w*.55,h*.28,w*.45,h*.35);
+  ctx.fillStyle='#8f97a0';ctx.fillRect(0,h*.15,w,h*.035);ctx.fillStyle='#d5d9de';ctx.fillRect(0,h*.15,w,h*.008);
+  const rows=[{y0:h*.42,ch:h*.36,cw:w*.10,off:w*.05,n:10,sh:.8},{y0:h*.55,ch:h*.5,cw:w*.135,off:-w*.02,n:9,sh:1}];
+  rows.forEach(r=>{for(let i=0;i<r.n;i++)can(ctx,r.off+i*(r.cw*1.08),r.y0,r.cw,r.ch,r.sh,R);});
+  finish(ctx,w,h,o,R);}
+/* 4. Ring-spinning frame: red bobbins over lilac packages, receding to the left */
+function spinning(ctx,w,h,o){const R=rng(o.seed||44);const vx=-w*.12,vy=h*.42;
+  ctx.fillStyle=lin(ctx,0,0,0,h,[[0,'#f3f5f7'],[.4,'#dfe3e7'],[.41,'#c9ced4'],[1,'#eef0f2']]);ctx.fillRect(0,0,w,h);
+  for(let k=0;k<7;k++){const d=k/7;ctx.fillStyle='rgba(255,255,255,'+(.9-d*.5)+')';ctx.fillRect(L(w*.1,w*.02,d),L(h*.02,h*.3,d),L(w*.9,w*.15,d),L(6,1,d));}
+  const X=w*1.06,band=(y0,y1,col)=>{poly(ctx,[[X,y0],[vx,vy],[X,y1]]);ctx.fillStyle=col;ctx.fill();};
+  band(h*.50,h*.60,'#e88a86');band(h*.60,h*.66,'#f4f2f0');band(h*.66,h*.70,'#9aa0a8');band(h*.90,h*1.2,'#d9dcdf');
+  const N=70;for(let k=N;k>=0;k--){const u=1-1/(1+k*.075);if(u>.97)continue;const s=1-u*.92,x=L(X,vx,u);
+    const pw=w*.062*s,ph=h*.20*s,py=L(h*.74,vy,u);rrect(ctx,x-pw/2,py,pw,ph,pw*.22);ctx.fillStyle=lin(ctx,x-pw/2,0,x+pw/2,0,[[0,'#8f8ccb'],[.4,'#d3d1f1'],[1,'#a2a0d8']]);ctx.fill();
+    ell(ctx,x,py,pw/2,pw*.2);ctx.fillStyle='#ecebf8';ctx.fill();
+    ctx.strokeStyle='rgba(255,255,255,.7)';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x,py);ctx.lineTo(x,L(h*.42,vy,u));ctx.stroke();
+    const rr=w*.032*s,by=L(h*.36,vy,u);
+    rrect(ctx,x-rr*.18,by-rr*2.1,rr*.36,rr*1.1,rr*.1);ctx.fillStyle='#202226';ctx.fill();
+    ell(ctx,x,by-rr*.9,rr*.55,rr*.7);ctx.fillStyle='#f1f1f3';ctx.fill();
+    ell(ctx,x,by,rr,rr*1.05);ctx.fillStyle=rad(ctx,x-rr*.3,by-rr*.3,rr*.1,rr*1.2,[[0,'#ff6a5e'],[.6,'#e5241f'],[1,'#8d0f0f']]);ctx.fill();
+    ell(ctx,x,by,rr*.2,rr*.22);ctx.fillStyle='#1c1c20';ctx.fill();}
+  finish(ctx,w,h,o,R);}
+/* 5. Blue bobbins close-up, near end large, far end small */
+function bobbins(ctx,w,h,o){const R=rng(o.seed||55);
+  ctx.fillStyle=lin(ctx,0,0,0,h,[[0,'#f2f4f6'],[.55,'#d8dde3'],[.56,'#1e2126'],[1,'#0f1114']]);ctx.fillRect(0,0,w,h);
+  const N=12;for(let k=0;k<N;k++){const t=k/(N-1),x=L(-w*.05,w*1.05,t),y=L(h*.72,h*.98,t),r=L(w*.05,w*.09,t);
+    ctx.fillStyle='#2a2d33';ctx.fillRect(x-r*.6,y,r*1.2,h);
+    ctx.strokeStyle='rgba(255,255,255,.55)';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x,y-r);ctx.lineTo(L(x,w*.5,.35),h*.35);ctx.stroke();
+    ell(ctx,x,y,r*.55,r);ctx.fillStyle=rad(ctx,x-r*.2,y-r*.3,r*.1,r*1.1,[[0,'#8fc4ff'],[.5,'#2f7fe0'],[1,'#123f8a']]);ctx.fill();
+    ell(ctx,x,y,r*.18,r*.3);ctx.fillStyle='#0f1216';ctx.fill();}
+  const M=9;for(let k=0;k<M;k++){const t=k/(M-1),x=L(w*.02,w*.95,t),y=L(h*.16,h*.30,t),r=L(w*.13,w*.34,t),rx=r*.38,bw=r*.9;
+    poly(ctx,[[x,y-r],[x-bw,y-r*.96],[x-bw,y+r*.96],[x,y+r]]);ctx.fillStyle=lin(ctx,0,y-r,0,y+r,[[0,'#1a4d9c'],[.3,'#3f8ff0'],[.55,'#6db3ff'],[.8,'#2b6fd0'],[1,'#12356e']]);ctx.fill();
+    ctx.fillStyle='rgba(8,10,14,.85)';ctx.fillRect(x-bw*.45,y-r*.98,bw*.14,r*1.96);ctx.fillRect(x-bw*.95,y-r*.97,bw*.10,r*1.94);
+    ell(ctx,x,y,rx,r);ctx.fillStyle=rad(ctx,x-rx*.4,y-r*.35,r*.1,r*1.2,[[0,'#7dbcff'],[.5,'#2f79d8'],[1,'#0e2f66']]);ctx.fill();
+    ell(ctx,x,y,rx*.9,r*.9);ctx.strokeStyle='rgba(5,8,14,.9)';ctx.lineWidth=r*.08;ctx.stroke();
+    ell(ctx,x,y,rx*.28,r*.28);ctx.fillStyle='#0b0d12';ctx.fill();}
+  finish(ctx,w,h,o,R);}
+/* 6. Dyed hanks hanging from a crane in the dyehouse */
+function hanks(ctx,w,h,o){const R=rng(o.seed||66);
+  ctx.fillStyle=lin(ctx,0,0,0,h,[[0,'#6b6f74'],[.5,'#9a9ea3'],[1,'#b9bcbf']]);ctx.fillRect(0,0,w,h);
+  ctx.fillStyle='#d19a1a';ctx.fillRect(0,h*.11,w,h*.075);ctx.fillStyle='#a8770e';ctx.fillRect(0,h*.16,w,h*.025);ctx.fillStyle='#e0ad2c';ctx.fillRect(0,h*.11,w,h*.012);
+  ctx.fillStyle='#c98f18';ctx.fillRect(w*.04,h*.18,w*.03,h*.5);ctx.fillRect(w*.13,h*.18,w*.025,h*.4);ctx.fillStyle='#b98a1c';ctx.fillRect(0,h*.44,w*.3,h*.02);
+  ctx.fillStyle='#5c6066';[.34,.44,.54,.64].forEach(f=>{for(let y=h*.185;y<h*.40;y+=6){ell(ctx,w*f,y,2.2,3.6);ctx.fill();}});
+  const fuzz=(x,y,W,H,base,hi,lo,n)=>{ctx.fillStyle=base;ctx.fillRect(x,y,W,H);ell(ctx,x+W/2,y+H,W/2,W*.09);ctx.fill();ell(ctx,x+W/2,y,W/2,W*.09);ctx.fillStyle=hi;ctx.fill();
+    for(let i=0;i<n;i++){const px=x+R()*W,py=y+R()*H,len=3+R()*W*.06;ctx.strokeStyle=R()<.5?hi:lo;ctx.globalAlpha=.35+R()*.4;ctx.lineWidth=1+R();ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(px+(R()-.5)*len,py+(R()-.5)*len);ctx.stroke();}
+    for(let i=0;i<n/6;i++){const left=R()<.5,side=left?x:x+W,py=y+R()*H;ctx.strokeStyle=hi;ctx.globalAlpha=.6;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(side,py);ctx.lineTo(side+(left?-1:1)*(2+R()*W*.04),py+(R()-.5)*8);ctx.stroke();}
+    ctx.globalAlpha=1;};
+  fuzz(w*.28,h*.40,w*.44,h*.17,'#7d1a48','#b5407a','#4e0c2b',900);
+  ctx.fillStyle='#e9e6df';ctx.fillRect(w*.60,h*.46,w*.04,h*.05);ctx.fillStyle='#8a8d92';ctx.fillRect(w*.28,h*.57,w*.44,h*.012);
+  fuzz(-w*.05,h*.62,w*.62,h*.22,'#e0207a','#ff6fb3','#9a1052',1600);fuzz(-w*.05,h*.84,w*.62,h*.22,'#d8186f','#ff5faa','#8a0c48',1600);
+  fuzz(w*.78,h*.66,w*.32,h*.4,'#ece5d3','#fbf8f0','#c8bfa8',800);
+  finish(ctx,w,h,o,R);}
+/* 7. Winder with white packages on green spindles and cones on the conveyor */
+function tow(ctx,w,h,o){const R=rng(o.seed||77);const vx=-w*.25,vy=h*.40;
+  ctx.fillStyle=lin(ctx,0,0,0,h,[[0,'#e9ecef'],[.35,'#cfd4d9'],[.36,'#aeb4ba'],[1,'#8e949a']]);ctx.fillRect(0,0,w,h);
+  for(let k=0;k<5;k++){ctx.fillStyle='rgba(255,255,255,.85)';ctx.fillRect(w*.05+k*w*.2,h*.05+k*h*.02,w*.16,5);}
+  const X=w*1.05,band=(y0,y1,col)=>{poly(ctx,[[X,y0],[vx,vy],[X,y1]]);ctx.fillStyle=col;ctx.fill();};
+  band(h*.42,h*.56,'#f2f3f4');band(h*.56,h*.60,'#1f7d45');band(h*.60,h*.72,'#e2e5e8');band(h*.72,h*.76,'#2d3238');band(h*.76,h*.88,'#6d747b');
+  const N=60;for(let k=N;k>=0;k--){const u=1-1/(1+k*.07);if(u>.96)continue;const s=1-u*.9,x=L(X,vx,u);
+    const gy=L(h*.22,vy,u);ctx.fillStyle='#1f8a4c';ctx.fillRect(x-w*.004*s-1,gy,w*.008*s+2,h*.09*s);ell(ctx,x,gy,w*.02*s,w*.012*s);ctx.fillStyle='#2a9c58';ctx.fill();
+    const pw=w*.075*s,ph=h*.11*s,py=L(h*.30,vy,u);ctx.fillStyle=lin(ctx,x-pw/2,0,x+pw/2,0,[[0,'#bfc3c7'],[.35,'#ffffff'],[1,'#c9cdd1']]);ctx.fillRect(x-pw/2,py,pw,ph);ell(ctx,x,py+ph,pw/2,pw*.18);ctx.fillStyle='#d4d7da';ctx.fill();ell(ctx,x,py,pw/2,pw*.18);ctx.fillStyle='#f4f5f6';ctx.fill();ell(ctx,x,py,pw*.12,pw*.05);ctx.fillStyle='#3b3f44';ctx.fill();
+    if(k%2===0){ctx.fillStyle=['#e63946','#f4c20d','#2a9d8f','#1d6fd6'][k%4];ctx.fillRect(x-w*.006*s,L(h*.63,vy,u),w*.012*s,h*.02*s);}
+    const cw=w*.065*s,ch=h*.13*s,cy=L(h*.92,vy,u);poly(ctx,[[x-cw*.30,cy-ch],[x+cw*.30,cy-ch],[x+cw*.5,cy],[x-cw*.5,cy]]);ctx.fillStyle=lin(ctx,x-cw/2,0,x+cw/2,0,[[0,'#c8ccd0'],[.4,'#fbfbfb'],[1,'#b9bec3']]);ctx.fill();ell(ctx,x,cy,cw*.5,cw*.16);ctx.fillStyle='#dcdfe2';ctx.fill();ell(ctx,x,cy-ch,cw*.3,cw*.1);ctx.fillStyle='#eceef0';ctx.fill();}
+  finish(ctx,w,h,o,R);}
+/* 8. The plant seen from the hillside: sawtooth roofs, gate canopy, road */
+function factory(ctx,w,h,o){const R=rng(o.seed||88);
+  ctx.fillStyle=lin(ctx,0,0,0,h*.45,[[0,'#5b6878'],[.55,'#9aa3ad'],[1,'#e2cfa6']]);ctx.fillRect(0,0,w,h*.45);
+  for(let i=0;i<9;i++){const x=R()*w,y=h*(.04+R()*.22),rx=w*(.08+R()*.12),ry=h*(.02+R()*.03);ell(ctx,x,y,rx,ry);ctx.fillStyle='rgba(230,225,215,'+(.12+R()*.2)+')';ctx.fill();}
+  const hill=(y,amp,col,sd)=>{ctx.fillStyle=col;ctx.beginPath();ctx.moveTo(0,h);ctx.lineTo(0,y);for(let x=0;x<=w+1;x+=w/24)ctx.lineTo(x,y-Math.abs(Math.sin(x/w*7+sd))*amp);ctx.lineTo(w,h);ctx.closePath();ctx.fill();};
+  hill(h*.33,h*.09,'#6e7f8a',1.3);hill(h*.37,h*.06,'#5f7461',2.1);hill(h*.42,h*.03,'#4f6a4e',3.4);
+  ctx.fillStyle=lin(ctx,0,h*.42,0,h,[[0,'#6f8b52'],[1,'#4f6a3a']]);ctx.fillRect(0,h*.42,w,h*.58);
+  for(let i=0;i<26;i++){const x=R()*w,y=h*(.44+R()*.1),r=h*(.015+R()*.03);ell(ctx,x,y,r*1.1,r);ctx.fillStyle='rgba('+(40+R()*30|0)+','+(70+R()*30|0)+','+(35+R()*20|0)+',.95)';ctx.fill();}
+  const bld=(x,y,W,D,H,shade)=>{const dx=-D*.55,dy=-D*.35;ctx.fillStyle=shade;ctx.fillRect(x,y-H,W,H);
+    poly(ctx,[[x,y-H],[x+dx,y-H+dy],[x+dx,y+dy],[x,y]]);ctx.fillStyle='#aeb5bc';ctx.fill();
+    const n=6;for(let i=0;i<n;i++){const t0=i/n,t1=(i+1)/n;poly(ctx,[[x+W*t0,y-H],[x+W*t1,y-H],[x+W*t1+dx,y-H+dy],[x+W*t0+dx,y-H+dy]]);ctx.fillStyle=i%2?'#eef0f2':'#d3d8dd';ctx.fill();}};
+  bld(w*.20,h*.52,w*.25,w*.12,h*.05,'#c3c9cf');bld(w*.08,h*.60,w*.30,w*.16,h*.07,'#cfd4d9');bld(w*.72,h*.58,w*.22,w*.14,h*.06,'#c9ced3');bld(w*.36,h*.62,w*.34,w*.18,h*.08,'#d4d9de');
+  ctx.fillStyle='#9a9ea2';poly(ctx,[[w*.48,h*.70],[w*1.02,h*.70],[w*1.02,h*1.05],[w*.6,h*1.05]]);ctx.fill();
+  ctx.strokeStyle='#8b8f93';ctx.lineWidth=h*.07;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(w*.95,h*1.02);ctx.quadraticCurveTo(w*.7,h*.85,w*.55,h*.70);ctx.stroke();
+  ctx.strokeStyle='rgba(255,255,255,.7)';ctx.lineWidth=1.5;ctx.setLineDash([8,8]);ctx.beginPath();ctx.moveTo(w*.9,h*1.02);ctx.quadraticCurveTo(w*.72,h*.88,w*.58,h*.73);ctx.stroke();ctx.setLineDash([]);
+  for(let i=0;i<5;i++){ctx.fillStyle=['#e8e8e8','#2d2d2d','#c9c9c9','#b02a2a','#dcdcdc'][i];ctx.fillRect(w*(.8+i*.035),h*(.78+i*.01),w*.028,h*.022);}
+  ctx.fillStyle='#f1f2f3';ctx.fillRect(w*.50,h*.60,w*.20,h*.05);ctx.fillStyle='#d5d8db';ctx.fillRect(w*.50,h*.65,w*.20,h*.008);ctx.fillStyle='#e5e7e9';ctx.fillRect(w*.505,h*.65,w*.012,h*.09);ctx.fillRect(w*.685,h*.65,w*.012,h*.09);
+  ctx.fillStyle=o.brand||'#4b2a75';ell(ctx,w*.548,h*.625,w*.016,h*.009);ctx.fill();ctx.font='400 '+Math.max(8,h*.028)+'px "Alfa Slab One", Georgia, serif';ctx.textBaseline='middle';ctx.fillText(o.name||'ASL IP',w*.572,h*.626);
+  for(let i=0;i<7;i++){const x=w*(i*.07)+R()*w*.03,y=h*(.9+R()*.15),r=h*(.06+R()*.06);ell(ctx,x,y,r*1.2,r);ctx.fillStyle='#2f4a2a';ctx.fill();}
+  finish(ctx,w,h,Object.assign({},o,{vignette:o.vignette==null?.25:o.vignette}),R);}
+const SCENES={cones,hall,creel:(c,w,h,o)=>hall(c,w,h,Object.assign({},o,{creel:true})),cans,spinning,bobbins,hanks,tow,factory};
+function draw(c,force){const r=c.getBoundingClientRect(),w=Math.round(r.width),h=Math.round(r.height);if(!w||!h)return;const dpr=Math.min(2,window.devicePixelRatio||1),key=w+'x'+h+'@'+dpr;if(!force&&c.dataset.key===key)return;c.dataset.key=key;c.width=Math.round(w*dpr);c.height=Math.round(h*dpr);const ctx=c.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);const fn=SCENES[c.dataset.scene];if(!fn)return;
+  fn(ctx,w,h,{seed:+c.dataset.seed||0,tint:c.dataset.tint||null,mul:c.dataset.mul||null,brand:c.dataset.brand||null,name:c.dataset.name||'ASL IP',vignette:c.dataset.vignette!=null&&c.dataset.vignette!==''?+c.dataset.vignette:null});}
+function all(force){document.querySelectorAll('canvas[data-scene]').forEach(c=>draw(c,force));}
+let t;window.addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(()=>all(false),150);});
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>all(true));else all(true);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>all(true));
+return{draw:draw,all:all};
+})();
+
+</script>
+<script>
+(function(){
+ var root=document.documentElement;
+ function setLang(l){root.setAttribute('data-lang',l);root.lang=l;try{localStorage.setItem('aslip-lang',l)}catch(e){}
+  document.querySelectorAll('[data-setlang]').forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-setlang')===l))});
+  document.querySelectorAll('[data-ph-uz]').forEach(function(i){i.placeholder=l==='uz'?i.getAttribute('data-ph-uz'):i.getAttribute('data-ph-en')});}
+ document.querySelectorAll('[data-setlang]').forEach(function(b){b.addEventListener('click',function(){setLang(b.getAttribute('data-setlang'))})});
+ setLang(root.getAttribute('data-lang')||'uz');
+ var burger=document.querySelector('.burger'),nav=document.getElementById('nav');
+ if(burger){burger.addEventListener('click',function(){var o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',String(o))});
+  nav.addEventListener('click',function(e){if(e.target.closest('a')){nav.classList.remove('open');burger.setAttribute('aria-expanded','false')}});}
+ document.querySelectorAll('form.nl').forEach(function(f){f.addEventListener('submit',function(e){e.preventDefault();var inp=f.querySelector('input');if(inp&&inp.value.indexOf('@')>0){f.classList.add('done')}else if(inp){inp.focus()}})});
+})();
+</script>
+
+</body>
+</html>

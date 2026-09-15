@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>ASL IP — sayt konseptlari / site concepts</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+*{box-sizing:border-box}
+:root{--bg:#f4f3f6;--card:#fff;--ink:#17141b;--muted:#6a6472;--line:#e1dde6;--accent:#4b2a75}
+@media (prefers-color-scheme:dark){:root{--bg:#141218;--card:#1d1a22;--ink:#f2eef5;--muted:#a49eac;--line:#2d2934;--accent:#b79ee6}}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 'Instrument Sans','Helvetica Neue',Arial,sans-serif;padding:clamp(28px,5vw,64px) 20px 60px}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font-family:'Alfa Slab One',Georgia,serif;font-weight:400;font-size:clamp(28px,4vw,42px);margin:0 0 6px;letter-spacing:.01em}
+.lead{color:var(--muted);max-width:60ch;margin:0 0 36px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:24px}
+a.card{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;text-decoration:none;color:inherit;transition:transform .15s ease,box-shadow .15s ease}
+a.card:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(0,0,0,.12)}
+a.card img{display:block;width:100%;aspect-ratio:7/5;object-fit:cover;border-bottom:1px solid var(--line)}
+.body{padding:18px 20px 22px}
+.tag{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600}
+h2{font-size:22px;margin:6px 0 8px}
+p{margin:0;color:var(--muted);font-size:15px}
+.open{display:inline-block;margin-top:14px;font-weight:600;color:var(--accent)}
+footer{margin-top:40px;color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+ <h1>ASL IP</h1>
+ <p class="lead">Uchta sayt konsepti · Three site concepts. Har bir sahifada UZ / EN tilini almashtirish mumkin · Each page has a UZ / EN switch in the header.</p>
+ <div class="grid">
+  <a class="card" href="a-sanoat.html"><img src="preview-a.jpg" alt="Concept A preview"><div class="body"><span class="tag">Konsept A · Concept A</span><h2>Sanoat · Industrial</h2><p>Korporativ uslub, slayder, binafsha brend rangi · Corporate look, slider hero, violet brand colour. Closest to the reference layout.</p><span class="open">Ochish · Open →</span></div></a>
+  <a class="card" href="b-rang.html"><img src="preview-b.jpg" alt="Concept B preview"><div class="body"><span class="tag">Konsept B · Concept B</span><h2>Rang · Editorial</h2><p>Yengil, jurnal uslubi, ranglar kartasi · Light editorial look with a serif display face and a yarn shade-card ribbon.</p><span class="open">Ochish · Open →</span></div></a>
+  <a class="card" href="c-texnik.html"><img src="preview-c.jpg" alt="Concept C preview"><div class="body"><span class="tag">Konsept C · Concept C</span><h2>Texnik · Technical</h2><p>Qorong'i texnik uslub, spetsifikatsiya jadvallari · Dark spec-sheet look with a yarn-count ruler and datasheet panels.</p><span class="open">Ochish · Open →</span></div></a>
+ </div>
+ <footer>Konsept sahifalar · Concept pages. Brend nomi, raqamlar va kontaktlar vaqtinchalik · Brand name, figures and contacts are placeholders.</footer>
+</div>
+</body>
+</html>
